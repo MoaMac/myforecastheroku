@@ -1,0 +1,66 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Final project</title>
+    <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+<body>
+<div id="container">
+    <header>
+        <h1>WeatherWear</h1>
+         </header>
+    <main>
+        <article>
+            <div id="infotext">
+                <p id="temp"></p>
+                <p id="clouds"></p>
+                <p id="wind"></p>
+                <p id="desc"></p>
+                <p id="rain"></p>
+                <img id="img1">
+            </div>
+            <div id="clothes">
+                <div>
+                    <img id="img2">
+                    <img id="img3">
+                </div>
+                <div>
+                    <img id="img4">
+                    <img id="img5">
+                </div>
+            </div>
+        </article>
+    </main>
+    <div id="mess"><span id="message"></span></div>
+    <button type="button" onclick="loadStaticDestiniation('Tokyo')">Tokyo</button>
+    <button type="button" onclick="loadStaticDestiniation('Svalbard')">Svalbard</button>
+    <button type="button" onclick="loadStaticDestiniation('Alaska')">Alaska</button>
+    <button type="button" onclick="loadStaticDestiniation('Barcelona')">Barcelona</button>
+    <button type="button" onclick="loadStaticDestiniation('London')">London</button>
+    <button type="button" onclick="loadStaticDestiniation('California')">California</button>
+
+</div>
+
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJaSM4geCc5JiQ1ATl2CebGfQV1XeUYG0&callback=getCurrentLocation">
+
+</script>
+<script src="img.js"></script>
+<script src="geoloc.js"></script>
+<script src="transmuter.js"></script>
+<script src="weather.js"></script>
+<!--<script src="transmuter.js"></script>-->
+</body>
+</html>
+
+
+<!--<div id="today">-->
+<!--<h1>WeatherWear</h1>-->
+<!--<p id="demo">FillerTextFillerText</p>-->
+
+<!--<div><img id="img1"></div>-->
+<!--<div><img id=""</div>-->
+<!--</div>-->
