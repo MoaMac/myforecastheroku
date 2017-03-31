@@ -51,11 +51,6 @@
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
         </dependency>
-		//Lägg till dependency för PostgreSQL
-		<dependency>
-			<groupId></groupId>
-			<artifactId></artifactId>
-		</dependency>
     </dependencies>
 
 	<build>
