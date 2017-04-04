@@ -10,13 +10,13 @@ import java.sql.*;
 @Component
 public class JDBCrepository implements RepositoryInterface {
 
-@Autowired
-private DataSource dataSource;
+    @Autowired
+    private DataSource dataSource;
 
     @Override
     public void addLog(String Country, String City) throws Exception {
         try (Connection conn = dataSource.getConnection();
-             PreparedStatement ps = conn.prepareStatement("INSERT INTO Log(Country, CityName) VALUES (?,?) ", new String[] {"id"})) {
+             PreparedStatement ps = conn.prepareStatement("INSERT INTO Log(Country, CityName) VALUES (?,?) ", new String[]{"id"})) {
             ps.setString(1, Country);
             ps.setString(2, City);
             ps.executeUpdate();

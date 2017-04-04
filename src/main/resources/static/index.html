@@ -2,19 +2,21 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <title>Final project</title>
     <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" type="text/css">
 </head>
-<body>
+
 <div id="container">
     <header>
         <h1>WeatherWear</h1>
-         </header>
+    </header>
     <main>
         <article>
             <div id="infotext">
+                <p id="city"></p>
                 <p id="temp"></p>
                 <p id="clouds"></p>
                 <p id="wind"></p>
@@ -35,32 +37,97 @@
         </article>
     </main>
     <div id="mess"><span id="message"></span></div>
-    <button type="button" onclick="loadStaticDestiniation('Tokyo')">Tokyo</button>
-    <button type="button" onclick="loadStaticDestiniation('Svalbard')">Svalbard</button>
-    <button type="button" onclick="loadStaticDestiniation('Alaska')">Alaska</button>
-    <button type="button" onclick="loadStaticDestiniation('Barcelona')">Barcelona</button>
-    <button type="button" onclick="loadStaticDestiniation('London')">London</button>
-    <button type="button" onclick="loadStaticDestiniation('California')">California</button>
 
+
+
+    <h3>Pick a location for vacation</h3>
+    <div id="map"></div>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+
+
+
+    <div class="forecast">
+        <div id="row1" class="section group">
+            <div class="col span_2_of_5">
+                ☀
+            </div>
+            <div class="col span_2_of_5">
+                06-09
+            </div>
+            <div class="col span_2_of_5">
+                09-12
+            </div>
+            <div class="col span_2_of_5">
+                12-15
+            </div>
+            <div class="col span_2_of_5">
+                15-18
+            </div>
+            <div class="col span_2_of_5">
+                18-21
+            </div>
+        </div>
+        <div id="row2" class="section group">
+            <div class="col span_1_of_5">
+                DATE
+            </div>
+            <div class="col span_1_of_5"></div>
+            <div class="col span_1_of_5"></div>
+            <div class="col span_1_of_5"></div>
+            <div class="col span_1_of_5"></div>
+            <div class="col span_1_of_5"></div>
+        </div>
+        <div id="row3" class="section group">
+            <div class="col span_1_of_5">
+                DATE
+            </div>
+            <div class="col span_1_of_5"></div>
+            <div class="col span_1_of_5"></div>
+            <div class="col span_1_of_5"></div>
+            <div class="col span_1_of_5"></div>
+            <div class="col span_1_of_5"></div>
+        </div>
+        <div id="row4" class="section group">
+            <div class="col span_1_of_5">
+                DATE
+            </div>
+            <div class="col span_1_of_5"></div>
+            <div class="col span_1_of_5"></div>
+            <div class="col span_1_of_5"></div>
+            <div class="col span_1_of_5"></div>
+            <div class="col span_1_of_5"></div>
+        </div>
+        <div id="row5" class="section group">
+            <div class="col span_1_of_5">
+                DATE
+            </div>
+            <div class="col span_1_of_5"></div>
+            <div class="col span_1_of_5"></div>
+            <div class="col span_1_of_5"></div>
+            <div class="col span_1_of_5"></div>
+            <div class="col span_1_of_5"></div>
+        </div>
+        <div id="row6" class="section group">
+            <div class="col span_1_of_5">
+                DATE
+            </div>
+            <div class="col span_1_of_5"></div>
+            <div class="col span_1_of_5"></div>
+            <div class="col span_1_of_5"></div>
+            <div class="col span_1_of_5"></div>
+            <div class="col span_1_of_5"></div>
+        </div>
+    </div>
 </div>
-
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJaSM4geCc5JiQ1ATl2CebGfQV1XeUYG0&callback=getCurrentLocation">
-
-</script>
-<script src="img.js"></script>
-<script src="geoloc.js"></script>
-<script src="transmuter.js"></script>
-<script src="weather.js"></script>
-<!--<script src="transmuter.js"></script>-->
+<script src="js/img.js"></script>
+<script src="js/geoloc.js"></script>
+<script src="js/transmuter.js"></script>
+<script src="js/weather.js"></script>
+<script src="js/forecast.js"></script>
+<!-- below script (<script async defer src="...) must be the last imported script -->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJaSM4geCc5JiQ1ATl2CebGfQV1XeUYG0&callback=initMap"></script>
 </body>
 </html>
-
-
-<!--<div id="today">-->
-<!--<h1>WeatherWear</h1>-->
-<!--<p id="demo">FillerTextFillerText</p>-->
-
-<!--<div><img id="img1"></div>-->
-<!--<div><img id=""</div>-->
-<!--</div>-->
