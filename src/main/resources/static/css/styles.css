@@ -3,6 +3,89 @@ body {
 }
 
 #container {
+    background-color: white;
+    width: 80%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding: 0;
+    margin: 0 auto;
+    color: royalblue;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+header {
+    height: 10%;
+    background-color: white;
+    text-align: center;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    padding: 1em;
+    margin-inside: 35px;
+    /*border-style: solid;*/
+    margin-outside: 50px;
+
+}
+
+#container {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+article {
+    background-color: white;
+    flex: 1;
+    text-align: center;
+    /*border-style: solid;*/
+}
+
+article div {
+    float: left;
+    overflow: auto;
+    width: 50%;
+    font-family: 'Roboto', sans-serif;
+}
+
+#infotext {
+    vertical-align: middle;
+}
+
+#mess {
+    font-family: 'Poiret One', cursives;
+    padding: 2em;
+    font-size: 2em;
+}
+
+#img1 {
+    width: 50%;
+}
+
+h1 {
+    font-family: 'Poiret One', cursive;
+    font-size: 4em;
+    margin: 60px;
+    text-align: center;
+}
+
+img {
+    margin: 25px;
+}
+
+#map {
+    width: 100%;
+    height: 400px;
+}
+
+#container {
     background: #FFF;
     color: royalblue;
 
@@ -47,10 +130,14 @@ main {
 }
 
 article {
-    background-color: white;
+    /*background-color: rgb(231, 242, 255);*/
     flex: 1;
     text-align: center;
+
     border-style: solid;
+    border-color: rgba(150, 150, 150, 0.31)
+
+    /*border-style: solid;*/
 }
 
 article div {
@@ -132,13 +219,17 @@ img {
     color: black;
     width: 15.5%;
     height: 5%;
-    border: 1px solid black;
+    font-family: 'Roboto', sans-serif;
+
+    border: 1px solid rgba(71, 82, 94, 0.28);
 }
 .span_1_of_5 {
     color: black;
     width: 15.5%;
     height: 12%;
-    border: 1px solid black;
+    font-family: 'Roboto', sans-serif;
+
+    border: 1px solid rgba(71, 82, 94, 0.28);
 }
 
 /*  GO FULL WIDTH BELOW 480 PIXELS */
@@ -173,6 +264,13 @@ img {
     top: -40px;
 }
 
+h2 {
+    font-family: 'Poiret One', cursives;
+}
+
 .forecast {
     background: #FFF;
+    padding: 1em;
+    padding-top: 4em;
+
 }
