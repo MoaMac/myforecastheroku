@@ -55,13 +55,12 @@ function initMap() {
             */
             getWeather(currentCoordinates);
 
-        }, function () {
-            handleLocationError(true, infoWindow, map.getCenter());
+
         });
-    } else {
-        handleLocationError(false, infoWindow, map.getCenter());
     }
 }
+
+
 
 function getWeather(currentCoordinates) {
 
