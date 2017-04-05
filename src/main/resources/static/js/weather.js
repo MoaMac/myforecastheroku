@@ -86,7 +86,66 @@ function setForecastData(data) {
     stringJson += "}]}";
 
     forecastData = JSON.parse(stringJson);
-    setFiveDayForecastData(forecastData);
+    setFiveDayForecastData();
+}
+
+function setFiveDayForecastData() {
+    var calendarDays = setCalendarDays();
+    var arrayAllRowsNodes = [getRowNodes(2), getRowNodes(3), getRowNodes(4), getRowNodes(5), getRowNodes(6)];
+
+    setFDFDatesInDOM(arrayAllRowsNodes);
+
+    var hours;
+    var arrayTemperatures = [];
+    var arrayRowTemperatures = [];
+
+    var arrayWeatherSums = [];
+    var arrayRowWeatherSums = [];
+
+    /* Calculate average temperature of the five day weather
+     * forecast from hour 06 to hour 21, two hour points at
+     * a time (average of temperature at hour 06 and hour 09,
+     * average of hour 09 and 12 etc.) */
+    var cdIndex = 0;
+    hours = setHours(calendarDays[cdIndex]);
+    for(var h = 0; h < hours.length; h++) {
+        if((h+1) < hours.length) {
+            data1 = forecastData[calendarDays[cdIndex]][0][hours[h]][0];
+            data2 = forecastData[calendarDays[cdIndex]][0][hours[h+1]][0];
+            avg = Math.round((Number(data1.temp) + Number(data2.temp))/2);
+            arrayRowTemperatures[h] = avg;
+            arrayRowWeatherSums[h] = data1.weathersum;
+        }
+    }
+
+    arrayWeatherSums[0] = arrayRowWeatherSums;
+    arrayRowWeatherSums = [];
+
+    arrayTemperatures[0] = arrayRowTemperatures;
+    arrayRowTemperatures = [];
+
+    for(cdIndex = 1; cdIndex < calendarDays.length; cdIndex++) {
+        hours = setHours(calendarDays[cdIndex]);
+        for(var h = 0; h < hours.length; h++) {
+            if(h > 1) {
+                if((h+1) < hours.length) {
+                    data1 = forecastData[calendarDays[cdIndex]][0][hours[h]][0];
+                    data2 = forecastData[calendarDays[cdIndex]][0][hours[h+1]][0];
+                    avg = Math.round((Number(data1.temp) + Number(data2.temp))/2);
+                    arrayRowTemperatures[h-2] = avg;
+                    arrayRowWeatherSums[h-2] = data1.weathersum;
+                }
+            }
+        }
+
+        arrayWeatherSums[arrayWeatherSums.length] = arrayRowWeatherSums;
+        arrayRowWeatherSums = [];
+
+        arrayTemperatures[arrayTemperatures.length] = arrayRowTemperatures;
+        arrayRowTemperatures = [];
+    }
+
+    setFiveDayForecastDataInDOM(arrayTemperatures, arrayWeatherSums, arrayAllRowsNodes);
 }
 
 function setCurrentForecastDataInDOM(cityName, cityCountry, temp, clouds, wind, weathersum) {
@@ -98,90 +157,13 @@ function setCurrentForecastDataInDOM(cityName, cityCountry, temp, clouds, wind, 
     transmute(temp, weathersum);
 }
 
-function setFiveDayForecastData(forecastData) {
-    var calendarDays = setCalendarDays(forecastData);
-
-    var date = new Date(0);
-
-    var calendarDayData;
-    var rowNodesAll = [getRowNodes(2), getRowNodes(3), getRowNodes(4), getRowNodes(5), getRowNodes(6)];
-    for(var i = 0; i < rowNodesAll.length; i++) {
-        date = new Date(0);
-        date.setUTCSeconds(forecastData[calendarDays[i]][0]["H21"][0].dt);
-        rowNodesAll[i][0].innerHTML = getStringDate(date);
-        calendarDayData = forecastData[calendarDays[i]][0];
-
-        var hours = [];
-        var indexInner = 0;
-        for (var hour in calendarDayData) {
-            hours[indexInner] = hour;
-            indexInner++;
-        }
-        indexInner = 0;
-    }
-
-    var calendarDays = setCalendarDays(forecastData);
-
-    var hours;
-    var arrayAll = [];
-    var arrayDay = [];
-
-    var arrayAllWeather = [];
-    var arrayDayWeather = [];
-
-
-    /* Calculate average temperature of the five day weather
-     * forecast from hour 06 to hour 21, two hour points at
-     * a time (average of temperature at hour 06 and hour 09,
-     * average of hour 09 and 12 etc.) */
-    var cdIndex = 0;
-    hours = setHours(forecastData, calendarDays[cdIndex]);
-    for(var h = 0; h < hours.length; h++) {
-        if((h+1) < hours.length) {
-            data1 = forecastData[calendarDays[cdIndex]][0][hours[h]][0];
-            data2 = forecastData[calendarDays[cdIndex]][0][hours[h+1]][0];
-            avg = Math.round((Number(data1.temp) + Number(data2.temp))/2);
-            arrayDay[h] = avg;
-            arrayDayWeather[h] = data1.weathersum;
-        }
-    }
-
-    arrayAllWeather[0] = arrayDayWeather;
-    arrayDayWeather = [];
-
-    arrayAll[0] = arrayDay;
-    arrayDay = [];
-    for(cdIndex = 1; cdIndex < calendarDays.length; cdIndex++) {
-        hours = setHours(forecastData, calendarDays[cdIndex]);
-        for(var h = 0; h < hours.length; h++) {
-            if(h > 1) {
-                if((h+1) < hours.length) {
-                    data1 = forecastData[calendarDays[cdIndex]][0][hours[h]][0];
-                    data2 = forecastData[calendarDays[cdIndex]][0][hours[h+1]][0];
-                    avg = Math.round((Number(data1.temp) + Number(data2.temp))/2);
-                    arrayDay[h-2] = avg;
-                    arrayDayWeather[h-2] = data1.weathersum;
-                }
-            }
-        }
-
-        arrayAllWeather[arrayAllWeather.length] = arrayDayWeather;
-        arrayDayWeather = [];
-
-        arrayAll[arrayAll.length] = arrayDay;
-        arrayDay = [];
-    }
-
-    setFiveDayForecastDataInDOM(arrayAll, arrayAllWeather, rowNodesAll);
-}
-
-function setFiveDayForecastDataInDOM(arrayTemperatures, arrayWeatherSum, arrayAllRowsNodes) {
+function setFiveDayForecastDataInDOM(arrayTemperatures, arrayWeatherSums, arrayAllRowsNodes) {
     var row = 0;
     var col = 0;
 
     // HANDLE FIRST ROW (TODAY'S WEATHER FORECAST)
     var arrayTodayTemperatures = arrayTemperatures[row];
-    var arrayTodayWeatherSums = arrayWeatherSum[row];
+    var arrayTodayWeatherSums = arrayWeatherSums[row];
     // offset required to position the data in correct column (when certain time period(s) has passed and the connected data is removed)
     var offset = 5 - arrayTodayTemperatures.length;
     for(col = 0; col < arrayTodayTemperatures.length; col++) {
@@ -191,15 +173,25 @@ function setFiveDayForecastDataInDOM(arrayTemperatures, arrayWeatherSum, arrayAl
     // HANDLE SECOND+ ROWS
     for(row = 1; row < arrayTemperatures.length; row++) {
         for(col = 0; col < arrayTemperatures[row].length; col++) {
-            arrayAllRowsNodes[row][col+1].innerHTML = generateHTMLItemForFDWF(arrayTemperatures[row][col], getTempImage(arrayTemperatures[row][col], arrayWeatherSum[row][col]));
+            arrayAllRowsNodes[row][col+1].innerHTML = generateHTMLItemForFDWF(arrayTemperatures[row][col], getTempImage(arrayTemperatures[row][col], arrayWeatherSums[row][col]));
         }
+    }
+}
+
+function setFDFDatesInDOM(arrayAllRowsNodes) {
+    var calendarDays = setCalendarDays();
+    var date;
+    for(var i = 0; i < arrayAllRowsNodes.length; i++) {
+        date = new Date(0);
+        date.setUTCSeconds(forecastData[calendarDays[i]][0]["H21"][0].dt);
+        arrayAllRowsNodes[i][0].innerHTML = getStringDate(date);
     }
 }
 
 /// --- HELP FUNCTIONS --- ///
 /* Get an array of the hours left of a specific
  * calendar day in the five day weather forecast */
-function setHours(forecastData, calendarDay) {
+function setHours(calendarDay) {
     var hours = [];
 
     var index = 0;
@@ -213,7 +205,7 @@ function setHours(forecastData, calendarDay) {
 
 /* Get an array of the calendar days in the
  *  current five day weather forecast */
-function setCalendarDays(forecastData) {
+function setCalendarDays() {
     var calendarDays = [];
 
     var index = 0;
