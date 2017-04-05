@@ -7,10 +7,10 @@ function loadLocation(lat, lon) {
     xhttp.open("GET", url, false);
     xhttp.send();
 
-    setFiveDayForecastData(JSON.parse(xhttp.responseText));
+    setForecastData(JSON.parse(xhttp.responseText));
 }
 
-function setFiveDayForecastData(data) {
+function setForecastData(data) {
     console.log("raw data: ", data);
 
     // LOCATION INFORMATION
@@ -79,17 +79,17 @@ function setFiveDayForecastData(data) {
         }
 
         if(i == 0) {
-            setCurrentWeatherDataInDOM(cityName, cityCountry, temp, clouds, wind, weathersum);
+            setCurrentForecastDataInDOM(cityName, cityCountry, temp, clouds, wind, weathersum);
         }
     }
 
     stringJson += "}]}";
 
     forecastData = JSON.parse(stringJson);
-    setFiveDayForecast(forecastData);
+    setFiveDayForecastData(forecastData);
 }
 
-function setCurrentWeatherDataInDOM(cityName, cityCountry, temp, clouds, wind, weathersum) {
+function setCurrentForecastDataInDOM(cityName, cityCountry, temp, clouds, wind, weathersum) {
     document.getElementById("city").innerHTML = "City: " + cityName + ", " + cityCountry;
     document.getElementById("temp").innerHTML = "Temp: " + temp + "° C";
     document.getElementById("clouds").innerHTML = "Cloudiness: " + clouds + " %";
@@ -98,27 +98,7 @@ function setCurrentWeatherDataInDOM(cityName, cityCountry, temp, clouds, wind, w
     transmute(temp, weathersum);
 }
 
-function setFiveDayForecastDataInDOM(arrayAll, arrayAllWeather, rowNodesAll) {
-    // FIRST ROW, not always full
-    var row = 0;
-    var todayArray = arrayAll[row];
-    var todayArrayWeather = arrayAllWeather[row];
-    var offset = 5 - todayArray.length;
-    for(var d = 0; d < todayArray.length; d++) {
-        rowNodesAll[row][d+1+offset].innerHTML = generateHTMLItemForFDWF(todayArray[d], getTempImage(todayArray[d], todayArrayWeather[d]));
-        rowNodesAll[row][d+1+offset].style.backgroundColor = "#eeeeee";
-    }
-
-    // SECOND+ ROWS, always full
-    for(var a = 1; a < arrayAll.length; a++) {
-        for(var d = 0; d < arrayAll[a].length; d++) {
-            rowNodesAll[a][d+1].innerHTML = generateHTMLItemForFDWF(arrayAll[a][d], getTempImage(arrayAll[a][d], arrayAllWeather[a][d]));
-            rowNodesAll[a][d+1].style.backgroundColor = "#eeeeee";
-        }
-    }
-}
-
-function setFiveDayForecast(forecastData) {
+function setFiveDayForecastData(forecastData) {
     var calendarDays = setCalendarDays(forecastData);
 
     var date = new Date(0);
@@ -193,6 +173,26 @@ function setFiveDayForecast(forecastData) {
     }
 
     setFiveDayForecastDataInDOM(arrayAll, arrayAllWeather, rowNodesAll);
+}
+
+function setFiveDayForecastDataInDOM(arrayAll, arrayAllWeather, rowNodesAll) {
+    // FIRST ROW, not always full
+    var row = 0;
+    var todayArray = arrayAll[row];
+    var todayArrayWeather = arrayAllWeather[row];
+    var offset = 5 - todayArray.length;
+    for(var d = 0; d < todayArray.length; d++) {
+        rowNodesAll[row][d+1+offset].innerHTML = generateHTMLItemForFDWF(todayArray[d], getTempImage(todayArray[d], todayArrayWeather[d]));
+        rowNodesAll[row][d+1+offset].style.backgroundColor = "#eeeeee";
+    }
+
+    // SECOND+ ROWS, always full
+    for(var a = 1; a < arrayAll.length; a++) {
+        for(var d = 0; d < arrayAll[a].length; d++) {
+            rowNodesAll[a][d+1].innerHTML = generateHTMLItemForFDWF(arrayAll[a][d], getTempImage(arrayAll[a][d], arrayAllWeather[a][d]));
+            rowNodesAll[a][d+1].style.backgroundColor = "#eeeeee";
+        }
+    }
 }
 
 /// --- HELP FUNCTIONS --- ///
