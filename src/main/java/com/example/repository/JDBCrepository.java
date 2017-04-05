@@ -1,11 +1,14 @@
 package com.example.repository;
 
+import com.example.Log;
 import com.example.RepositoryInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class JDBCrepository implements RepositoryInterface {
@@ -24,6 +27,25 @@ public class JDBCrepository implements RepositoryInterface {
             throw new Exception(e);
         }
     }
+
+    @Override
+    public List<Log> listLog() throws Exception {
+        try (Connection conn = dataSource.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT LogID, Country, CityName FROM Log")) {
+            List<Log> logs = new ArrayList<>();
+            while (rs.next()) logs.add(rsLog(rs));
+            return logs;
+        } catch (SQLException e) {
+            throw new Exception(e);
+        }
+    }
+
+    private Log rsLog(ResultSet rs) throws SQLException {
+        return new Log(rs.getString("Country"), rs.getString("CityName"));
+    }
+
+
 
 //
 //    public Logs getLog(int LogId) throws Exception {

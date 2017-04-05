@@ -25,42 +25,10 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@Controller
 @SpringBootApplication
 public class LoginApplication {
 
-    @GetMapping("/login")
-    public String form() {
-        return "login";
-    }
 
-    @GetMapping("/logout")
-    public String logout(HttpSession session, HttpServletResponse res) {
-        session.invalidate();
-        Cookie cookie = new Cookie("jsessionid", "");
-        cookie.setMaxAge(0);
-        res.addCookie(cookie);
-        return "login";
-    }
-
-    @PostMapping("/login")
-    public String submit(HttpSession session, @RequestParam String username, @RequestParam String password) {
-        if (username.equalsIgnoreCase("myforecast") && password.equalsIgnoreCase("myforecast") ) {
-            session.setAttribute("user", username);
-            return "statistics";
-        }
-        return "login";
-    }
-
-    @GetMapping("/statistics")
-    public ModelAndView secret(HttpSession session) {
-
-        //session.setAttribute("user", );
-        if (session.getAttribute("user") != null) {
-            return new ModelAndView("statistics");
-        }
-        return new ModelAndView("login");
-    }
 
     public static void main(String[] args) {
         SpringApplication.run(LoginApplication.class, args);
