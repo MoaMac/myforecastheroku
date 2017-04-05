@@ -12,6 +12,7 @@
 <div id="container">
     <header>
         <h1>WeatherWear</h1>
+
     </header>
     <main>
         <article>
@@ -32,19 +33,17 @@
                 <div>
                     <img id="img4">
                     <img id="img5">
+
                 </div>
             </div>
+
         </article>
+
     </main>
-    <div id="mess"><span id="message"></span></div>
+    <span id="message"></span>
 
 
-
-    <h2>Pick a location for vacation</h3>
-    <div id="map"></div>
-
-
-
+    <p id="fp">5 days forecast</p>
 
     <div class="forecast">
         <div id="row1" class="section group">
@@ -118,6 +117,8 @@
             <div class="col span_1_of_5"></div>
         </div>
     </div>
+    <h3>Check the weather for your vacation</h3>
+    <div id="map"></div>
 </div>
 <script src="js/img.js"></script>
 <script src="js/geoloc.js"></script>
@@ -125,6 +126,7 @@
 <script src="js/weather.js"></script>
 <script src="js/forecast.js"></script>
 <!-- below script (<script async defer src="...) must be the last imported script -->
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJaSM4geCc5JiQ1ATl2CebGfQV1XeUYG0&callback=initMap"></script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJaSM4geCc5JiQ1ATl2CebGfQV1XeUYG0&callback=initMap"></script>
 </body>
 </html>
