@@ -165,7 +165,7 @@ function setFiveDayForecastDataInDOM(arrayTemperatures, arrayWeatherSums) {
     }
 
     // Handle second+ rows
-    for(row = 1; row < arrayTemperatures.length; row++) {
+    for(row = 1; row < arrayAllRowsNodes.length; row++) {
         for(col = 0; col < arrayTemperatures[row].length; col++) {
             arrayAllRowsNodes[row][col+1].innerHTML = generateHTMLItemForFDWF(arrayTemperatures[row][col], getTempImage(arrayWeatherSums[row][col]));
         }
