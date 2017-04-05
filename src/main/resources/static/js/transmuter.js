@@ -1,4 +1,4 @@
-function getTempImage(temp, weather) {
+function getTempImage(weather) {
     switch (weather) {
         case "Clear":
             return "img/041-sun.svg";

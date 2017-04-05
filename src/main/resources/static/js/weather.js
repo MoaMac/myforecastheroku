@@ -102,19 +102,20 @@ function setFiveDayForecastData() {
     var arrayWeatherSums = [];
     var arrayRowWeatherSums = [];
 
-    /* Calculate average temperature of the five day weather
-     * forecast from hour 06 to hour 21, two hour points at
-     * a time (average of temperature at hour 06 and hour 09,
-     * average of hour 09 and 12 etc.) */
+    /* Calculate average temperature of the five day weather forecast
+     * from hour 06 to hour 21, two hour points at a time (i.e. average of
+     * temperature at hour 06 and hour 09, average of hour 09 and 12 etc.) */
     var cdIndex = 0;
+    var currentHour;
+    var nextHour;
     hours = setHours(calendarDays[cdIndex]);
     for(var h = 0; h < hours.length; h++) {
         if((h+1) < hours.length) {
-            data1 = forecastData[calendarDays[cdIndex]][0][hours[h]][0];
-            data2 = forecastData[calendarDays[cdIndex]][0][hours[h+1]][0];
-            avg = Math.round((Number(data1.temp) + Number(data2.temp))/2);
+            currentHour = forecastData[calendarDays[cdIndex]][0][hours[h]][0];
+            nextHour = forecastData[calendarDays[cdIndex]][0][hours[h+1]][0];
+            avg = Math.round((Number(currentHour.temp) + Number(nextHour.temp))/2);
             arrayRowTemperatures[h] = avg;
-            arrayRowWeatherSums[h] = data1.weathersum;
+            arrayRowWeatherSums[h] = currentHour.weathersum;
         }
     }
 
@@ -129,11 +130,11 @@ function setFiveDayForecastData() {
         for(var h = 0; h < hours.length; h++) {
             if(h > 1) {
                 if((h+1) < hours.length) {
-                    data1 = forecastData[calendarDays[cdIndex]][0][hours[h]][0];
-                    data2 = forecastData[calendarDays[cdIndex]][0][hours[h+1]][0];
-                    avg = Math.round((Number(data1.temp) + Number(data2.temp))/2);
+                    currentHour = forecastData[calendarDays[cdIndex]][0][hours[h]][0];
+                    nextHour = forecastData[calendarDays[cdIndex]][0][hours[h+1]][0];
+                    avg = Math.round((Number(currentHour.temp) + Number(nextHour.temp))/2);
                     arrayRowTemperatures[h-2] = avg;
-                    arrayRowWeatherSums[h-2] = data1.weathersum;
+                    arrayRowWeatherSums[h-2] = currentHour.weathersum;
                 }
             }
         }
@@ -167,24 +168,25 @@ function setFiveDayForecastDataInDOM(arrayTemperatures, arrayWeatherSums, arrayA
     // offset required to position the data in correct column (when certain time period(s) has passed and the connected data is removed)
     var offset = 5 - arrayTodayTemperatures.length;
     for(col = 0; col < arrayTodayTemperatures.length; col++) {
-        arrayAllRowsNodes[row][col+1+offset].innerHTML = generateHTMLItemForFDWF(arrayTodayTemperatures[col], getTempImage(arrayTodayTemperatures[col], arrayTodayWeatherSums[col]));
+        arrayAllRowsNodes[row][col+1+offset].innerHTML = generateHTMLItemForFDWF(arrayTodayTemperatures[col], getTempImage(arrayTodayWeatherSums[col]));
     }
 
     // HANDLE SECOND+ ROWS
     for(row = 1; row < arrayTemperatures.length; row++) {
         for(col = 0; col < arrayTemperatures[row].length; col++) {
-            arrayAllRowsNodes[row][col+1].innerHTML = generateHTMLItemForFDWF(arrayTemperatures[row][col], getTempImage(arrayTemperatures[row][col], arrayWeatherSums[row][col]));
+            arrayAllRowsNodes[row][col+1].innerHTML = generateHTMLItemForFDWF(arrayTemperatures[row][col], getTempImage(arrayWeatherSums[row][col]));
         }
     }
 }
 
 function setFDFDatesInDOM(arrayAllRowsNodes) {
     var calendarDays = setCalendarDays();
+
     var date;
-    for(var i = 0; i < arrayAllRowsNodes.length; i++) {
+    for(var row = 0; row < arrayAllRowsNodes.length; row++) {
         date = new Date(0);
-        date.setUTCSeconds(forecastData[calendarDays[i]][0]["H21"][0].dt);
-        arrayAllRowsNodes[i][0].innerHTML = getStringDate(date);
+        date.setUTCSeconds(forecastData[calendarDays[row]][0]["H21"][0].dt);
+        arrayAllRowsNodes[row][0].innerHTML = getStringDate(date);
     }
 }
 
