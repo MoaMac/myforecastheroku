@@ -1,6 +1,5 @@
 var currentCoordinates = 0;
-var map;
-var marker;
+var marker = null;
 
 function handleLocationError(browserHasGeolocation) {
     var errormsg = browserHasGeolocation ?
@@ -24,7 +23,18 @@ function initMap() {
         getWeather(currentCoordinates);
         map.panTo(event.latLng);
         map.setZoom(5);
-        marker.setPosition(event.latLng);
+
+        if(marker == null) {
+            marker = new google.maps.Marker({
+                position: {
+                    lat: event.latLng.lat(),
+                    lng: event.latLng.lng()
+                },
+                map: map
+            });
+        } else {
+            marker.setPosition(event.latLng);
+        }
 
     });
 
