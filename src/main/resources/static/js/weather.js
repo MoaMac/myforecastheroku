@@ -109,33 +109,17 @@ function setFiveDayForecastData() {
     var currentHour;
     var nextHour;
     hours = setHours(calendarDays[cdIndex]);
-    for(var h = 0; h < hours.length; h++) {
-        if((h+1) < hours.length) {
-            currentHour = forecastData[calendarDays[cdIndex]][0][hours[h]][0];
-            nextHour = forecastData[calendarDays[cdIndex]][0][hours[h+1]][0];
-            avg = Math.round((Number(currentHour.temp) + Number(nextHour.temp))/2);
-            arrayRowTemperatures[h] = avg;
-            arrayRowWeatherSums[h] = currentHour.weathersum;
-        }
-    }
 
-    arrayWeatherSums[0] = arrayRowWeatherSums;
-    arrayRowWeatherSums = [];
-
-    arrayTemperatures[0] = arrayRowTemperatures;
-    arrayRowTemperatures = [];
-
-    for(cdIndex = 1; cdIndex < calendarDays.length; cdIndex++) {
+    for(cdIndex = 0; cdIndex < calendarDays.length; cdIndex++) {
         hours = setHours(calendarDays[cdIndex]);
         for(var h = 0; h < hours.length; h++) {
-            if(h > 1) {
-                if((h+1) < hours.length) {
-                    currentHour = forecastData[calendarDays[cdIndex]][0][hours[h]][0];
-                    nextHour = forecastData[calendarDays[cdIndex]][0][hours[h+1]][0];
-                    avg = Math.round((Number(currentHour.temp) + Number(nextHour.temp))/2);
-                    arrayRowTemperatures[h-2] = avg;
-                    arrayRowWeatherSums[h-2] = currentHour.weathersum;
-                }
+            if((h+1) < hours.length) {
+                currentHour = forecastData[calendarDays[cdIndex]][0][hours[h]][0];
+                nextHour = forecastData[calendarDays[cdIndex]][0][hours[h+1]][0];
+                avg = Math.round((Number(currentHour.temp) + Number(nextHour.temp))/2);
+
+                arrayRowTemperatures[(cdIndex > 0 && h > 1) ? h-2 : h] = avg;
+                arrayRowWeatherSums[(cdIndex > 0 && h > 1) ? h-2 : h] = currentHour.weathersum;
             }
         }
 
