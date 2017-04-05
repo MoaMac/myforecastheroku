@@ -71,3 +71,4 @@ function getWeather(currentCoordinates) {
     //getSpecificForecastData(1, 18);
 
 }
+
