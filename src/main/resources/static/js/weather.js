@@ -175,22 +175,23 @@ function setFiveDayForecastData(forecastData) {
     setFiveDayForecastDataInDOM(arrayAll, arrayAllWeather, rowNodesAll);
 }
 
-function setFiveDayForecastDataInDOM(arrayAll, arrayAllWeather, rowNodesAll) {
-    // FIRST ROW, not always full
+function setFiveDayForecastDataInDOM(arrayTemperatures, arrayWeatherSum, arrayAllRowsNodes) {
     var row = 0;
-    var todayArray = arrayAll[row];
-    var todayArrayWeather = arrayAllWeather[row];
-    var offset = 5 - todayArray.length;
-    for(var d = 0; d < todayArray.length; d++) {
-        rowNodesAll[row][d+1+offset].innerHTML = generateHTMLItemForFDWF(todayArray[d], getTempImage(todayArray[d], todayArrayWeather[d]));
-        rowNodesAll[row][d+1+offset].style.backgroundColor = "#eeeeee";
+    var col = 0;
+
+    // HANDLE FIRST ROW (TODAY'S WEATHER FORECAST)
+    var arrayTodayTemperatures = arrayTemperatures[row];
+    var arrayTodayWeatherSums = arrayWeatherSum[row];
+    // offset required to position the data in correct column (when certain time period(s) has passed and the connected data is removed)
+    var offset = 5 - arrayTodayTemperatures.length;
+    for(col = 0; col < arrayTodayTemperatures.length; col++) {
+        arrayAllRowsNodes[row][col+1+offset].innerHTML = generateHTMLItemForFDWF(arrayTodayTemperatures[col], getTempImage(arrayTodayTemperatures[col], arrayTodayWeatherSums[col]));
     }
 
-    // SECOND+ ROWS, always full
-    for(var a = 1; a < arrayAll.length; a++) {
-        for(var d = 0; d < arrayAll[a].length; d++) {
-            rowNodesAll[a][d+1].innerHTML = generateHTMLItemForFDWF(arrayAll[a][d], getTempImage(arrayAll[a][d], arrayAllWeather[a][d]));
-            rowNodesAll[a][d+1].style.backgroundColor = "#eeeeee";
+    // HANDLE SECOND+ ROWS
+    for(row = 1; row < arrayTemperatures.length; row++) {
+        for(col = 0; col < arrayTemperatures[row].length; col++) {
+            arrayAllRowsNodes[row][col+1].innerHTML = generateHTMLItemForFDWF(arrayTemperatures[row][col], getTempImage(arrayTemperatures[row][col], arrayWeatherSum[row][col]));
         }
     }
 }
