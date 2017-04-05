@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>statistics</title>
+</head>
+<body>
+<h1>Statistics over MyForecast users</h1>
+<a href="/logout">Logout</a>
+<div id="piechart" style="width: 900px; height: 500px;"></div>
+<table>
+    <tr><th>Country</th><th>City</th></tr>
+    <tr th:each="Log : ${Logs}">
+        <td th:text="${Log.Country}" /> <td th:text="${Log.CityName}" />
+    </tr>
+</table>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="js/statistics.js"></script>
+</body>
+</html>
