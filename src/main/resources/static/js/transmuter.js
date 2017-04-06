@@ -37,7 +37,7 @@ function getTempImage(weather) {
 function getBackground(weather) {
     switch (weather) {
         case "Clear":
-            return "img/sunny-1.svg";
+            return "img/bluesky1-1.svg";
             break;
         case "Rain":
             return "img/rain1-1.svg";
