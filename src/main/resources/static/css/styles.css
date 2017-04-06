@@ -327,9 +327,9 @@ h3 {
 }
 
 .fa-cloud {
-    text-align: left;
     width: 100%;
     font-size: 4em;
+    text-align: right;
 }
 
 .fa-cloud:before {
@@ -468,3 +468,11 @@ h4 {
     width: 162px;
     height: 78px;
 }
+
+table {
+    text-align: center;
+    margin: 0px auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
