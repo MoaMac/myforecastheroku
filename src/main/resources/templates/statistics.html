@@ -5,16 +5,15 @@
     <title>statistics</title>
 </head>
 <body>
+<img src="logotyp/MyForecast (6) (1).png"/>
 <h1>Statistics over MyForecast users</h1>
 <a href="/logout">Logout</a>
-<div id="piechart" style="width: 900px; height: 500px;"></div>
+<!--<a href="/logout"> <i class=" fa-cloud"></i></a>-->
 <table>
     <tr><th>Country</th><th>City</th></tr>
     <tr th:each="Log : ${Logs}">
         <td th:text="${Log.Country}" /> <td th:text="${Log.CityName}" />
     </tr>
 </table>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script src="js/statistics.js"></script>
 </body>
 </html>
