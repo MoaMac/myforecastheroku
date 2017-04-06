@@ -13,14 +13,15 @@
 <div id="container">
     <header>
         <a href="/login"> <i class="fa fa-cloud"></i></a>
-
-        <h1>WeatherWear</h1>
-
+        <!--Icon for fa-fa cloud "\f0c2"-->
+        <img id="logotype" src="logotyp/MyForecast (6) (1).png"/>
     </header>
-    <main>
-        <article>
-            <div id="infotext">
-                <p id="city"></p>
+    <body>
+    <!--GRID FOR TODAY'S FORECAST-->
+    <p class="fp"><span id="city"></span> today</p>
+    <div class="plate1">
+        <div class="wrapper1">
+            <div class="box info"><p>Right now</p>
                 <p id="temp"></p>
                 <p id="clouds"></p>
                 <p id="wind"></p>
@@ -28,97 +29,165 @@
                 <p id="rain"></p>
                 <img id="img1">
             </div>
-            <div id="clothes">
-                <div>
-                    <img id="img2">
-                    <img id="img3">
-                </div>
-                <div>
-                    <img id="img4">
-                    <img id="img5">
-
-                </div>
-            </div>
-
-        </article>
-
-    </main>
+            <div class="time time1">Morgon </br>6-9</div>
+            <div class="time time2">Förmiddag</br>9-12</div>
+            <div class="time time3">Tidig eftermiddag</br>12-15</div>
+            <div class="time time4">Sen eftermiddag</br>15-18</div>
+            <div class="time time5">Kväll</br>18-21</div>
+        </div>
+    </div>
+    
+    <div id="row2" class="plate1 wrapper1">
+        <div class="box a2"></div>
+        <div class="box b2"></div>
+        <div class="box c2"></div>
+        <div class="box d2"></div>
+        <div class="box e2"></div>
+        <div class="box f2"></div>
+    </div>
     <span id="message"></span>
 
-
-    <p id="fp">5 days forecast</p>
-
+    <p class="fp">5 days forecast</p>
+    <div id="row" class="plate1 wrapper1">
+        <div class="box a2"></div>
+        <div class="box b2">6-9</div>
+        <div class="box c2">9-12</div>
+        <div class="box d2">12-15</div>
+        <div class="box e2">15-18</div>
+        <div class="box f2">18-21</div>
+    </div>
+    <!--Rad 2-->
+    <div id="row3" class="plate1 wrapper1">
+        <div class="box g2">F</div>
+        <div class="box h2">F</div>
+        <div class="box i2">F</div>
+        <div class="box j2">F</div>
+        <div class="box k2">F</div>
+        <div class="box">F</div>
+    </div>
+    <!--Rad 3-->
+    <div id="row4" class="plate1 wrapper1">
+        <div class="box">F</div>
+        <div class="box">F</div>
+        <div class="box">F</div>
+        <div class="box">F</div>
+        <div class="box">F</div>
+        <div class="box">F</div>
+    </div>
+    <!--rad 4-->
+    <div id="row5" class="plate1 wrapper1">
+        <div class="box">F</div>
+        <div class="box">F</div>
+        <div class="box">F</div>
+        <div class="box">F</div>
+        <div class="box">F</div>
+        <div class="box">F</div>
+    </div>
+    <!--rad 5-->
+    <div id="row6" class="plate1 wrapper1">
+        <div class="box">F</div>
+        <div class="box">F</div>
+        <div class="box">F</div>
+        <div class="box">F</div>
+        <div class="box">F</div>
+        <div class="box">F</div>
+    </div>
+    <!--Här börjar gamla koden, den är bara bortkommenterad-->
+    <main>
+        <article>
+            <!--<div id="infotext">-->
+                <!--<p id="city"></p>-->
+                <!--<p id="temp"></p>-->
+                <!--<p id="clouds"></p>-->
+                <!--<p id="wind"></p>-->
+                <!--<p id="desc"></p>-->
+                <!--<p id="rain"></p>-->
+                <!--<img id="img1">-->
+            <!--</div>-->
+            <!--<div id="clothes">-->
+                <!--<div>-->
+                    <!--<img id="img2">-->
+                    <!--<img id="img3">-->
+                <!--</div>-->
+                <!--<div>-->
+                    <!--<img id="img4">-->
+                    <!--<img id="img5">-->
+                <!--</div>-->
+            <!--</div>-->
+        </article>
+    </main>
+    <!--<span id="message"></span>-->
     <div class="forecast">
-        <div id="row1" class="section group">
-            <div class="col span_2_of_5">
-                ☀
-            </div>
-            <div class="col span_2_of_5">
-                06-09
-            </div>
-            <div class="col span_2_of_5">
-                09-12
-            </div>
-            <div class="col span_2_of_5">
-                12-15
-            </div>
-            <div class="col span_2_of_5">
-                15-18
-            </div>
-            <div class="col span_2_of_5">
-                18-21
-            </div>
-        </div>
-        <div id="row2" class="section group">
-            <div class="col span_1_of_5">
-                DATE
-            </div>
-            <div class="col span_1_of_5"></div>
-            <div class="col span_1_of_5"></div>
-            <div class="col span_1_of_5"></div>
-            <div class="col span_1_of_5"></div>
-            <div class="col span_1_of_5"></div>
-        </div>
-        <div id="row3" class="section group">
-            <div class="col span_1_of_5">
-                DATE
-            </div>
-            <div class="col span_1_of_5"></div>
-            <div class="col span_1_of_5"></div>
-            <div class="col span_1_of_5"></div>
-            <div class="col span_1_of_5"></div>
-            <div class="col span_1_of_5"></div>
-        </div>
-        <div id="row4" class="section group">
-            <div class="col span_1_of_5">
-                DATE
-            </div>
-            <div class="col span_1_of_5"></div>
-            <div class="col span_1_of_5"></div>
-            <div class="col span_1_of_5"></div>
-            <div class="col span_1_of_5"></div>
-            <div class="col span_1_of_5"></div>
-        </div>
-        <div id="row5" class="section group">
-            <div class="col span_1_of_5">
-                DATE
-            </div>
-            <div class="col span_1_of_5"></div>
-            <div class="col span_1_of_5"></div>
-            <div class="col span_1_of_5"></div>
-            <div class="col span_1_of_5"></div>
-            <div class="col span_1_of_5"></div>
-        </div>
-        <div id="row6" class="section group">
-            <div class="col span_1_of_5">
-                DATE
-            </div>
-            <div class="col span_1_of_5"></div>
-            <div class="col span_1_of_5"></div>
-            <div class="col span_1_of_5"></div>
-            <div class="col span_1_of_5"></div>
-            <div class="col span_1_of_5"></div>
-        </div>
+        <!--<div id="row1" class="section group">-->
+            <!--<div class="col span_2_of_5">-->
+                <!--☀-->
+            <!--</div>-->
+            <!--<div class="col span_2_of_5">-->
+                <!--06-09-->
+            <!--</div>-->
+            <!--<div class="col span_2_of_5">-->
+                <!--09-12-->
+            <!--</div>-->
+            <!--<div class="col span_2_of_5">-->
+                <!--12-15-->
+            <!--</div>-->
+            <!--<div class="col span_2_of_5">-->
+                <!--15-18-->
+            <!--</div>-->
+            <!--<div class="col span_2_of_5">-->
+                <!--18-21-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div id="row2" class="section group">-->
+            <!--<div class="col span_1_of_5">-->
+                <!--DATE-->
+            <!--</div>-->
+            <!--<div class="col span_1_of_5"></div>-->
+            <!--<div class="col span_1_of_5"></div>-->
+            <!--<div class="col span_1_of_5"></div>-->
+            <!--<div class="col span_1_of_5"></div>-->
+            <!--<div class="col span_1_of_5"></div>-->
+        <!--</div>-->
+        <!--<div id="row3" class="section group">-->
+            <!--<div class="col span_1_of_5">-->
+                <!--DATE-->
+            <!--</div>-->
+            <!--<div class="col span_1_of_5"></div>-->
+            <!--<div class="col span_1_of_5"></div>-->
+            <!--<div class="col span_1_of_5"></div>-->
+            <!--<div class="col span_1_of_5"></div>-->
+            <!--<div class="col span_1_of_5"></div>-->
+        <!--</div>-->
+        <!--<div id="row4" class="section group">-->
+            <!--<div class="col span_1_of_5">-->
+                <!--DATE-->
+            <!--</div>-->
+            <!--<div class="col span_1_of_5"></div>-->
+            <!--<div class="col span_1_of_5"></div>-->
+            <!--<div class="col span_1_of_5"></div>-->
+            <!--<div class="col span_1_of_5"></div>-->
+            <!--<div class="col span_1_of_5"></div>-->
+        <!--</div>-->
+        <!--<div id="row5" class="section group">-->
+            <!--<div class="col span_1_of_5">-->
+                <!--DATE-->
+            <!--</div>-->
+            <!--<div class="col span_1_of_5"></div>-->
+            <!--<div class="col span_1_of_5"></div>-->
+            <!--<div class="col span_1_of_5"></div>-->
+            <!--<div class="col span_1_of_5"></div>-->
+            <!--<div class="col span_1_of_5"></div>-->
+        <!--</div>-->
+        <!--<div id="row6" class="section group">-->
+            <!--<div class="col span_1_of_5">-->
+                <!--DATE-->
+            <!--</div>-->
+            <!--<div class="col span_1_of_5"></div>-->
+            <!--<div class="col span_1_of_5"></div>-->
+            <!--<div class="col span_1_of_5"></div>-->
+            <!--<div class="col span_1_of_5"></div>-->
+            <!--<div class="col span_1_of_5"></div>-->
+        <!--</div>-->
     </div>
     <h3>Check the weather for your vacation</h3>
     <div id="map"></div>
