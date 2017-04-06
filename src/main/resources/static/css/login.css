@@ -224,3 +224,8 @@ input:valid + .label {
     transition: background .2s;
 
 }
+
+#logotype {
+    width: 162px;
+    height: 78px;
+}

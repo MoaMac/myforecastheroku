@@ -37,19 +37,19 @@ function getTempImage(weather) {
 function getBackground(weather) {
     switch (weather) {
         case "Clear":
-            return "https://images.pexels.com/photos/97558/pexels-photo-97558.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb";
+            return "img/sunny-1.svg";
             break;
         case "Rain":
-            return "https://images.pexels.com/photos/110874/pexels-photo-110874.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb";
+            return "img/rain1-1.svg";
             break;
         case "Clouds":
-            return "https://images.pexels.com/photos/158163/clouds-cloudporn-weather-lookup-158163.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb";
+            return "img/cloudy-1.svg";
             break;
         case "Snow":
-            return "https://images.pexels.com/photos/286198/pexels-photo-286198.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"
+            return "img/snow-1.svg"
             break;
         default:
-            return "https://images.pexels.com/photos/158163/clouds-cloudporn-weather-lookup-158163.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb";
+            return "img/cloudy-1.svg";
             break;
     }
 }
@@ -208,6 +208,48 @@ function chooseClothes(temp) {
         message = "Shame on you, guys! The weather is getting hotter than YOU!";
     }
     return imgClothing2;
+}
+
+
+function chooseArrayClothes(temp) {
+    var clothes = [];
+    if (temp < -10) {
+        clothes[0] = "img2/016-fashion-1.svg"; //Uggs
+        clothes[1] = "img/013-jacket-1.svg"; //Dunjacka
+        clothes[2] = "img3/003-sweater.svg"; //Tjocktröja
+        message = "Holy crap, I can't feel my face degrees! Wear something warm!"
+    } else if (-10 < temp && temp <= 0) {
+        clothes[0] = "img2/014-hat.svg"; //Mössa
+        clothes[1] = "img/010-boot.svg"; //Kängor
+        clothes[2] = "img2/015-christmas.svg"; //Halsduk
+        message = "I miss hating the summer heat. Don't forget your hat!";
+    } else if (0 < temp && temp <= 5) {
+        clothes[0] = "img3/004-boot.svg";  //Boots vid skask
+        clothes[1] = "img3/006-coat.svg"; //Kappa
+        clothes[2] = "img3/005-winter-hat.svg"; //Mössa
+        message = "Boring, cold weather. Wear something warm and colorful.";
+    } else if (5 < temp && temp <= 10) {
+        clothes[0] = "img2/006-jacket.svg";//Jacka
+        clothes[1] = "img/028-fashion.svg"; //Keps
+        clothes[2] = "img3/008-jeans.svg"; //Jeans
+        message = "Cloudy, with a 100% chance of greyness!";
+    } else if (10 < temp && temp <= 17) {
+        clothes[0] = "img3/010-skirt.svg";  //Kjol
+        clothes[1] = "img3/009-socks.svg"; //Strumpbyxor
+        clothes[2] = "img/024-shoe.svg";//Converse
+        message = "Watch out for unicorns. Wear converse!";
+    } else if (17 < temp && temp <= 23) {
+        clothes[0] = "img2/011-dress.svg";  //Klänning
+        clothes[1] = "img2/007-denim-jacket.svg"; //denimjacket
+        clothes[2] = "img/015-fashion-2.svg"; //T-shirt
+        message = "Go out and eat ICECREAM!";
+    } else if (23 < temp && temp < 40) {
+        clothes[0] = "img/023-fashion-1.svg";  //Bikini
+        clothes[1] = "img/016-swimsuit.svg"; //Badshorts
+        clothes[2] = "img2/013-bride-dress.svg"; //Mössa
+        message = "Shame on you, guys! The weather is getting hotter than YOU!";
+    }
+    return clothes;
 }
 
 function chooseAccessories(weather) {

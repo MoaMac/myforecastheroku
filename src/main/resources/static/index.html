@@ -12,13 +12,24 @@
 
 <div id="container">
     <header>
-        <a href="/login"> <i class="fa fa-cloud"></i></a>
+        <!--<a href="/login"> <i class="fa fa-cloud"></i></a>-->
         <!--Icon for fa-fa cloud "\f0c2"-->
-        <img id="logotype" src="logotyp/MyForecast (6) (1).png"/>
+        <!--<div><a href="/login"><i class="fa fa-cloud"></i></a>-->
+        <!--<img id="logotype" src="logotyp/MyForecast (6) (1).png"/></div>-->
     </header>
     <body>
+    <!--GRID FOR HEADER-->
+    <div class="wrapper1">
+        <div class="r1"></div>
+        <div class="r2"><img id="logotype" src="logotyp/MyForecast (6) (1).png"/></div>
+        <div class="r3"><p class="fp"><span id="city"></span> today</p></div>
+        <div class="r4"></div>
+        <div class="r5"><a href="/login"><i class="fa fa-cloud"></i></a></div>
+        <div class="r6"></div>
+    </div>
+
     <!--GRID FOR TODAY'S FORECAST-->
-    <p class="fp"><span id="city"></span> today</p>
+    <!--<p class="fp"><span id="city"></span> today</p>-->
     <div class="plate1">
         <div class="wrapper1">
             <div class="box info"><p>Right now</p>
@@ -29,16 +40,16 @@
                 <p id="rain"></p>
                 <img id="img1">
             </div>
-            <div class="time time1">Morgon </br>6-9</div>
-            <div class="time time2">Förmiddag</br>9-12</div>
-            <div class="time time3">Tidig eftermiddag</br>12-15</div>
-            <div class="time time4">Sen eftermiddag</br>15-18</div>
-            <div class="time time5">Kväll</br>18-21</div>
+            <div class="time time1">6-9</div>
+            <div class="time time2">9-12</div>
+            <div class="time time3">12-15</div>
+            <div class="time time4">15-18</div>
+            <div class="time time5">18-21</div>
         </div>
     </div>
     
     <div id="row2" class="plate1 wrapper1">
-        <div class="box a2"></div>
+        <div class="time a2"></div>
         <div class="box b2"></div>
         <div class="box c2"></div>
         <div class="box d2"></div>
@@ -49,16 +60,16 @@
 
     <p class="fp">5 days forecast</p>
     <div id="row" class="plate1 wrapper1">
-        <div class="box a2"></div>
-        <div class="box b2">6-9</div>
-        <div class="box c2">9-12</div>
-        <div class="box d2">12-15</div>
-        <div class="box e2">15-18</div>
-        <div class="box f2">18-21</div>
+        <div class="time a2"></div>
+        <div class="time b2">6-9</div>
+        <div class="time c2">9-12</div>
+        <div class="time d2">12-15</div>
+        <div class="time e2">15-18</div>
+        <div class="time f2">18-21</div>
     </div>
     <!--Rad 2-->
     <div id="row3" class="plate1 wrapper1">
-        <div class="box g2">F</div>
+        <div class="time g2">F</div>
         <div class="box h2">F</div>
         <div class="box i2">F</div>
         <div class="box j2">F</div>
@@ -67,7 +78,7 @@
     </div>
     <!--Rad 3-->
     <div id="row4" class="plate1 wrapper1">
-        <div class="box">F</div>
+        <div class="time">F</div>
         <div class="box">F</div>
         <div class="box">F</div>
         <div class="box">F</div>
@@ -76,7 +87,7 @@
     </div>
     <!--rad 4-->
     <div id="row5" class="plate1 wrapper1">
-        <div class="box">F</div>
+        <div class="time">F</div>
         <div class="box">F</div>
         <div class="box">F</div>
         <div class="box">F</div>
@@ -85,7 +96,7 @@
     </div>
     <!--rad 5-->
     <div id="row6" class="plate1 wrapper1">
-        <div class="box">F</div>
+        <div class="time">F</div>
         <div class="box">F</div>
         <div class="box">F</div>
         <div class="box">F</div>
@@ -200,4 +211,5 @@
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJaSM4geCc5JiQ1ATl2CebGfQV1XeUYG0&callback=initMap"></script>
 </body>
+
 </html>

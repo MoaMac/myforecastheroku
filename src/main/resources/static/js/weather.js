@@ -161,9 +161,12 @@ function setFiveDayForecastDataInDOM(arrayTemperatures, arrayWeatherSums) {
     // offset required to position the data in correct column (when certain time period(s) has passed and the connected data is removed)
     var offset = 5 - arrayTodayTemperatures.length;
     for (col = 0; col < arrayTodayTemperatures.length; col++) {
-        var clothesImg = chooseClothes(arrayTodayTemperatures[col])
+        var clothes = chooseArrayClothes(arrayTodayTemperatures[col])
+        var clothing1 = clothes [0];
+        var clothing2 = clothes [1];
+        var clothing3 = clothes [2];
         var accessoriesImg = chooseAccessories(arrayTodayWeatherSums[col]);
-        arrayAllRowsNodes[row][col + 1 + offset].innerHTML = generateHTMLItemForecast(arrayTodayTemperatures[col], getTempImage(arrayTodayWeatherSums[col]), clothesImg, accessoriesImg);
+        arrayAllRowsNodes[row][col + 1 + offset].innerHTML = generateHTMLItemToday(arrayTodayTemperatures[col], getTempImage(arrayTodayWeatherSums[col]), clothing1, clothing2, clothing3, accessoriesImg);
         var backgroundImg = getBackground(arrayTodayWeatherSums[col]);
         arrayAllRowsNodes[row][col + 1 + offset].setAttribute("style", "background-image: url("+backgroundImg+")");
     }
@@ -263,11 +266,16 @@ function getRowNodes(rowNumber) {
     return nodesArray;
 }
 // Function added by Moa ///
-function generateHTMLItemForecast(text, imgres, clothes, accessories) {
-    return "<div id='avgicon' class='" + imgres + "'><img id='image' src='" + imgres + "'/><p id='text'>" + text + "</p>" +
-        "<img id='accessories' src='" + accessories + "'>" + "<img src='" + clothes + "'> " + "</div>";
+function generateHTMLItemToday(text, imgres, clothing1, clothing2, clothing3, accessories) {
+    return "<div id='avgicon' class='" + imgres + "'><p id='text'>" + text + " °C</p>" +
+        "<img id='accessories' src='" + accessories + "'>" + "<img src='" + clothing1 + "'> "+ "<img src='" + clothing2 + "'> "+ "<img src='" + clothing3 + "'> " + "</div>";
 }
-
+function generateHTMLItemForecast(text, imgres, clothes, accessories) {
+    return "<div id='avgicon' class='" + imgres + "'><p id='text'>" + text + " °C</p>" +
+        "<img id='accessories' src='" + accessories + "'>" + "<img src='" + clothes + "'></div>";
+}
+//
+// <img id='image' src='" + imgres + "'/>
 // The function below is the original version
 /* Generate HTML for a five day weather forecast item
  * consisting of a div container with an image and a text */
