@@ -86,9 +86,9 @@ article div {
 h1 {
     font-family: 'Poiret One', cursive;
     font-size: 4em;
-    /*margin: 60px;*/
     text-align: center;
     color: #2f4893;
+    margin-top: 0;
 }
 
 img {
@@ -324,4 +324,18 @@ h3 {
 .fa-cloud:before {
     content: "\f0c2";
     font-size: 40px;
+}
+
+form {
+    text-align: center;
+    padding-top: 50px;
+}
+
+h4 {
+    text-align: center;
+    font-family: 'Poiret One', cursives;
+    color: #27608a;
+    font-size: 2em;
+    font-weight: bold;
+    margin-top: 80px;
 }
