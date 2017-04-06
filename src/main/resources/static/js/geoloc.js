@@ -11,10 +11,10 @@ function initMap() {
     map.addListener('click', function (event) {
         currentCoordinates = {
             lat: event.latLng.lat(),
-            lon: event.latLng.lng()
+            lng: event.latLng.lng()
         };
 
-        getWeather(currentCoordinates);
+        loadLocation(currentCoordinates.lat, currentCoordinates.lng);
 
         map.panTo(event.latLng);
         map.setZoom(5);
@@ -44,18 +44,17 @@ function initMap() {
                 position: pos,
                 map: map
             });
+
             map.setCenter(pos);
+
             currentCoordinates = {
                 lat: position.coords.latitude,
-                lon: position.coords.longitude
+                lng: position.coords.longitude
             };
 
-            loadLocation(currentCoordinates.lat, currentCoordinates.lon);
-
-            getWeather(currentCoordinates);
-
-
+            loadLocation(currentCoordinates.lat, currentCoordinates.lng);
         }, function () {
+            // Borgarfjordvägen 4, Stockholm
             var defaultCoordinates = {
                 lat: 59.407363,
                 lng: 17.946856
@@ -76,10 +75,4 @@ function initMap() {
             loadLocation(defaultCoordinates.lat, defaultCoordinates.lng);
         });
     }
-}
-
-
-
-function getWeather(currentCoordinates) {
-    loadLocation(currentCoordinates.lat, currentCoordinates.lon);
 }
