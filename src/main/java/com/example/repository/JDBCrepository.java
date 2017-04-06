@@ -32,7 +32,7 @@ public class JDBCrepository implements RepositoryInterface {
     public List<Log> listLog() throws Exception {
         try (Connection conn = dataSource.getConnection();
              Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT LogID, Country, CityName FROM Log")) {
+             ResultSet rs = stmt.executeQuery("SELECT CityName, COUNT (*) AS DUPES FROM Log GROUP BY CityName HAVING (COUNT (*)>1)")) {
             List<Log> logs = new ArrayList<>();
             while (rs.next()) logs.add(rsLog(rs));
             return logs;
@@ -42,7 +42,7 @@ public class JDBCrepository implements RepositoryInterface {
     }
 
     private Log rsLog(ResultSet rs) throws SQLException {
-        return new Log(rs.getString("Country"), rs.getString("CityName"));
+        return new Log("", rs.getString("CityName"), rs.getInt("DUPES"));
     }
 
 
