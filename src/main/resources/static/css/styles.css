@@ -92,7 +92,7 @@ h1 {
 }
 
 img {
-    margin: 25px;
+    width:50%;
 }
 
 #map {
@@ -270,6 +270,7 @@ img {
     position: relative;
     margin: 0 auto;
     padding: 0;
+    display: inline-block;
 }
 
 #image {
@@ -300,7 +301,7 @@ h3 {
 
 }
 
-#fp {
+.fp {
     font-family: 'Poiret One', cursives;
     color: #002540;
     font-size: 2em;
@@ -324,4 +325,111 @@ h3 {
 .fa-cloud:before {
     content: "\f0c2";
     font-size: 40px;
+}
+
+.wrapper1 {
+    padding: 2px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 5px;
+    background-color: white;
+    color: #444;
+}
+.time {
+    background-color: white;
+    color: #7491BF;
+    padding: 20px;
+    font-size: 150%;
+}
+.box {
+    background-color: #7491BF;
+    color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 150%;
+}
+
+.plate1 {
+    display: grid;
+    background-color: white;
+}
+
+.time1 {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 1;
+}
+
+.time2 {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 1;
+}
+
+.time3 {
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 1;
+}
+.time4 {
+    grid-column-start: 5;
+    grid-column-end: 6;
+    grid-row-start: 1;
+    grid-row-end: 1;
+}
+.time5 {
+    grid-column-start: 6;
+    grid-column-end: 7;
+    grid-row-start: 1;
+    grid-row-end: 1;
+}
+
+.d {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 2;
+}
+
+.e {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 2;
+}
+
+.f {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 2;
+}
+
+.g {
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 2;
+    grid-row-end: 2;
+}
+
+.h {
+    grid-column-start: 5;
+    grid-column-end: 6;
+    grid-row-start: 2;
+    grid-row-end: 2;
+}
+
+.i {
+    grid-column-start: 6;
+    grid-column-end: 7;
+    grid-row-start: 2;
+    grid-row-end: 2;
+}
+
+.info{
+    font-size: 0;
+    background-color: white;
 }
