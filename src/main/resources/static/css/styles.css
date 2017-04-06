@@ -317,9 +317,9 @@ h3 {
 
 }
 .fa-cloud {
-    text-align: left;
     width: 100%;
     font-size: 4em;
+    text-align: right;
 }
 .fa-cloud:before {
     content: "\f0c2";
@@ -338,4 +338,11 @@ h4 {
     font-size: 2em;
     font-weight: bold;
     margin-top: 80px;
+}
+
+table {
+    text-align: center;
+    margin: 0px auto;
+    margin-left: auto;
+    margin-right: auto;
 }
