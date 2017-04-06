@@ -13,7 +13,7 @@
 <img id="logotype" src="logotyp/MyForecast (6) (1).png"/>
 <h1>Statistics over MyForecast users</h1>
 <table>
-    <tr><th>City</th><th>Count</th></tr>
+    <tr><th>City</th><th>Quantity</th></tr>
     <tr th:each="Log : ${Logs}">
         <td th:text="${Log.CityName}"/><td th:text="${Log.DUPES}" />
     </tr>
