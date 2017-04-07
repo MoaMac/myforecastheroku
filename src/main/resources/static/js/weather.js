@@ -82,7 +82,7 @@ function setForecastData(data) {
                 + "\",\"weatherdesc\":\"" + weatherdesc + "\"}]";
         }
 
-        if(i == 0) {
+        if (i == 0) {
             setCurrentForecastDataInDOM(cityName, cityCountry, temp, clouds, wind, weathersum);
         }
     }
@@ -105,18 +105,18 @@ function setFiveDayForecastData() {
 
     var currentHourData;
     var nextHourData;
-    for(var cdIndex = 0; cdIndex < calendarDays.length; cdIndex++) {
+    for (var cdIndex = 0; cdIndex < calendarDays.length; cdIndex++) {
         hours = setHours(calendarDays[cdIndex]);
-        for(var h = 0; h < hours.length; h++) {
-            if((h+1) < hours.length) {
+        for (var h = 0; h < hours.length; h++) {
+            if ((h + 1) < hours.length) {
                 // calculate average temperature of two following time periods' temperatures
                 currentHourData = forecastData[calendarDays[cdIndex]][0][hours[h]][0];
-                nextHourData = forecastData[calendarDays[cdIndex]][0][hours[h+1]][0];
-                avg = Math.round((Number(currentHourData.temp) + Number(nextHourData.temp))/2);
-                arrayRowTemperatures[(cdIndex > 0 && h > 1) ? h-2 : h] = avg;
+                nextHourData = forecastData[calendarDays[cdIndex]][0][hours[h + 1]][0];
+                avg = Math.round((Number(currentHourData.temp) + Number(nextHourData.temp)) / 2);
+                arrayRowTemperatures[(cdIndex > 0 && h > 1) ? h - 2 : h] = avg;
 
                 // save weather state for the first time period's temperature
-                arrayRowWeatherSums[(cdIndex > 0 && h > 1) ? h-2 : h] = currentHourData.weathersum;
+                arrayRowWeatherSums[(cdIndex > 0 && h > 1) ? h - 2 : h] = currentHourData.weathersum;
             }
         }
 
@@ -127,50 +127,97 @@ function setFiveDayForecastData() {
         arrayRowTemperatures = [];
     }
 
-    return {temperatures:arrayTemperatures, weatherSums:arrayWeatherSums};
+    return {temperatures: arrayTemperatures, weatherSums: arrayWeatherSums};
 }
 
 function setCurrentForecastDataInDOM(cityName, cityCountry, temp, clouds, wind, weathersum) {
-    document.getElementById("city").innerHTML = "City: " + cityName + ", " + cityCountry;
+    document.getElementById("city").innerHTML = cityName;
     document.getElementById("temp").innerHTML = "Temp: " + temp + "° C";
     document.getElementById("clouds").innerHTML = "Cloudiness: " + clouds + " %";
     document.getElementById("wind").innerHTML = "Wind speed: " + wind + " m/s";
 
-    transmute(temp, weathersum);
+    //transmute(temp, weathersum);
 }
 
+/// This method is added by Moa to test the grid-functionallity ////
 function setFiveDayForecastDataInDOM(arrayTemperatures, arrayWeatherSums) {
     var arrayAllRowsNodes = [getRowNodes(2), getRowNodes(3), getRowNodes(4), getRowNodes(5), getRowNodes(6)];
 
     // SET DATES IN DOM
     var calendarDays = setCalendarDays();
     var date;
-    for(var row = 0; row < arrayAllRowsNodes.length; row++) {
+    for (var row = 0; row < arrayAllRowsNodes.length; row++) {
         date = new Date(0);
         date.setUTCSeconds(forecastData[calendarDays[row]][0]["H21"][0].dt);
         arrayAllRowsNodes[row][0].innerHTML = getStringDate(date);
     }
-
     // SET AVERAGE TEMPERATURE AND WEATHER IMAGE IN DOM
     var row = 0;
     var col = 0;
 
-    // Handle first row (the today's weather forecast)
+    // HANDLE FIRST ROW (TODAY'S WEATHER FORECAST)
     var arrayTodayTemperatures = arrayTemperatures[row];
     var arrayTodayWeatherSums = arrayWeatherSums[row];
     // offset required to position the data in correct column (when certain time period(s) has passed and the connected data is removed)
     var offset = 5 - arrayTodayTemperatures.length;
-    for(col = 0; col < arrayTodayTemperatures.length; col++) {
-        arrayAllRowsNodes[row][col+1+offset].innerHTML = generateHTMLItemForFDWF(arrayTodayTemperatures[col], getTempImage(arrayTodayWeatherSums[col]));
+    for (col = 0; col < arrayTodayTemperatures.length; col++) {
+        var clothes = chooseArrayClothes(arrayTodayTemperatures[col])
+        var clothing1 = clothes [0];
+        var clothing2 = clothes [1];
+        var clothing3 = clothes [2];
+        var accessoriesImg = chooseAccessories(arrayTodayWeatherSums[col]);
+        arrayAllRowsNodes[row][col + 1 + offset].innerHTML = generateHTMLItemToday(arrayTodayTemperatures[col], getTempImage(arrayTodayWeatherSums[col]), clothing1, clothing2, clothing3, accessoriesImg);
+        var backgroundImg = getBackground(arrayTodayWeatherSums[col]);
+        arrayAllRowsNodes[row][col + 1 + offset].setAttribute("style", "background-image: url("+backgroundImg+")");
     }
+    document.getElementById("message").innerHTML = getMessage(arrayTodayTemperatures,arrayTodayWeatherSums);
 
-    // Handle second+ rows
-    for(row = 1; row < arrayAllRowsNodes.length; row++) {
-        for(col = 0; col < arrayTemperatures[row].length; col++) {
-            arrayAllRowsNodes[row][col+1].innerHTML = generateHTMLItemForFDWF(arrayTemperatures[row][col], getTempImage(arrayWeatherSums[row][col]));
+    // HANDLE SECOND+ ROWS
+    for (row = 1; row < arrayTemperatures.length; row++) {
+        for (col = 0; col < arrayTemperatures[row].length; col++) {
+            var clothesImg = chooseClothes(arrayTemperatures[row][col])
+            accessoriesImg = chooseAccessories(arrayWeatherSums[row][col]);
+            arrayAllRowsNodes[row][col + 1].innerHTML = generateHTMLItemForecast(arrayTemperatures[row][col], getTempImage(arrayWeatherSums[row][col]), clothesImg, accessoriesImg);
+            var backgroundImg = getBackground(arrayWeatherSums[row][col]);
+            arrayAllRowsNodes[row][col + 1].setAttribute("style", "background-image: url("+backgroundImg+")");
         }
     }
 }
+
+/// Below is the original setFiveDayForecastDataInDOM method ///
+
+// function setFiveDayForecastDataInDOM(arrayTemperatures, arrayWeatherSums) {
+//     var arrayAllRowsNodes = [getRowNodes(2), getRowNodes(3), getRowNodes(4), getRowNodes(5), getRowNodes(6)];
+//
+//     // SET DATES IN DOM
+//     var calendarDays = setCalendarDays();
+//     var date;
+//     for(var row = 0; row < arrayAllRowsNodes.length; row++) {
+//         date = new Date(0);
+//         date.setUTCSeconds(forecastData[calendarDays[row]][0]["H21"][0].dt);
+//         arrayAllRowsNodes[row][0].innerHTML = getStringDate(date);
+//     }
+//
+//     // SET AVERAGE TEMPERATURE AND WEATHER IMAGE IN DOM
+//     var row = 0;
+//     var col = 0;
+//
+//     // Handle first row (the today's weather forecast)
+//     var arrayTodayTemperatures = arrayTemperatures[row];
+//     var arrayTodayWeatherSums = arrayWeatherSums[row];
+//     // offset required to position the data in correct column (when certain time period(s) has passed and the connected data is removed)
+//     var offset = 5 - arrayTodayTemperatures.length;
+//     for(col = 0; col < arrayTodayTemperatures.length; col++) {
+//         arrayAllRowsNodes[row][col+1+offset].innerHTML = generateHTMLItemForFDWF(arrayTodayTemperatures[col], getTempImage(arrayTodayWeatherSums[col]));
+//     }
+//
+//     // Handle second+ rows
+//     for(row = 1; row < arrayAllRowsNodes.length; row++) {
+//         for(col = 0; col < arrayTemperatures[row].length; col++) {
+//             arrayAllRowsNodes[row][col+1].innerHTML = generateHTMLItemForFDWF(arrayTemperatures[row][col], getTempImage(arrayWeatherSums[row][col]));
+//         }
+//     }
+// }
 
 /// --- HELP FUNCTIONS --- ///
 /* Get an array of the hours left of a specific
@@ -208,22 +255,33 @@ function getRowNodes(rowNumber) {
     var tempArray = document.getElementById("row" + rowNumber).childNodes;
 
     var index = 0;
-    for(var j = 0; j < tempArray.length; j++) {
+    for (var j = 0; j < tempArray.length; j++) {
         node = tempArray[j];
         // Only extract the divs of the component
-        if(node.tagName == 'DIV') {
+        if (node.tagName == 'DIV') {
             nodesArray[index] = node;
             index++;
         }
     }
     return nodesArray;
 }
-
+// Function added by Moa ///
+function generateHTMLItemToday(text, imgres, clothing1, clothing2, clothing3, accessories) {
+    return "<div id='avgicon' class='" + imgres + "'><p id='text'>" + text + " °C</p>" +
+        "<img id='accessories' src='" + accessories + "'>" + "<img src='" + clothing1 + "'> "+ "<img src='" + clothing2 + "'> "+ "<img src='" + clothing3 + "'> " + "</div>";
+}
+function generateHTMLItemForecast(text, imgres, clothes, accessories) {
+    return "<div id='avgicon' class='" + imgres + "'><p id='text'>" + text + " °C</p>" +
+        "<img id='accessories' src='" + accessories + "'>" + "<img src='" + clothes + "'></div>";
+}
+//
+// <img id='image' src='" + imgres + "'/>
+// The function below is the original version
 /* Generate HTML for a five day weather forecast item
  * consisting of a div container with an image and a text */
-function generateHTMLItemForFDWF(text, imgres) {
-    return "<div id='avgicon'><img id='image' src='"+imgres+"'/><p id='text'>"+text+"</p></div>";
-}
+// function generateHTMLItemForFDWF(text, imgres) {
+//     return "<div id='avgicon'><img id='image' src='" + imgres + "'/><p id='text'>" + text + "</p></div>";
+// }
 
 /// --- DATE FUNCTIONS --- ///
 /* Get string date in format: DDDD, DD MMMM (i.e. Friday, 7 April)

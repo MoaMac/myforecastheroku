@@ -23,29 +23,28 @@ body {
 }
 
 header {
-    height: 10%;
+    height: 3%;
     background-color: white;
-    text-align: center;
+    text-align: left;
 }
 
 main {
     flex: 1;
     display: flex;
     flex-direction: row;
-    padding-top: 100px ;
+    padding-top: 100px;
     margin-inside: 35px;
     /*border-style: solid;*/
     margin-outside: 50px;
 
-
 }
 
-
+/* NIKLAS LÄGGER TILL EN EXPERMEINTEITNEITNEIENI BRANSCHPOPOOOOOO*/
 
 /*#container {*/
-    /*display: block;*/
-    /*margin-left: auto;*/
-    /*margin-right: auto;*/
+/*display: block;*/
+/*margin-left: auto;*/
+/*margin-right: auto;*/
 /*}*/
 
 article {
@@ -92,109 +91,35 @@ h1 {
 }
 
 img {
-    margin: 25px;
+    width: 50%;
+}
+
+#row2 img{
+    width:100%;
 }
 
 #map {
     width: 100%;
     height: 400px;
+    padding: 2em;
 }
 
-/*#container {*/
-    /*background: #FFF;*/
-    /*!*color: #3D9399;*!*/
+.fa-cloud {
+    width: 100%;
+    text-align: right;
+    font-size: 4em;
+}
 
-    /*position: absolute;*/
-
-    /*width: 80%;*/
-    /*height: 100%;*/
-    /*top: 0;*/
-    /*left: 0;*/
-    /*bottom: 0;*/
-    /*right: 0;*/
-
-    /*padding: 0;*/
-    /*margin: 0 auto;*/
-    /*display: flex;*/
-
-    /*align-items: center;*/
-    /*text-align: center;*/
-/*}*/
-
-/*header {*/
-    /*height: 10%;*/
-    /*background-color: white;*/
-    /*text-align: center;*/
-/*}*/
-
-/*main {*/
-    /*flex: 1;*/
-    /*display: flex;*/
-    /*flex-direction: row;*/
-    /*padding: 1em;*/
-    /*margin-inside: 35px;*/
-    /*!*border-style: solid;*!*/
-    /*margin-outside: 50px;*/
-
-/*}*/
-
-/*#container {*/
-    /*display: block;*/
-    /*margin-left: auto;*/
-    /*margin-right: auto;*/
-/*}*/
-
-/*article {*/
-    /*!*background-color: rgb(231, 242, 255);*!*/
-    /*flex: 1;*/
-    /*text-align: center;*/
-
-    /*border-style: solid;*/
-    /*border-color: rgba(150, 150, 150, 0.31)*/
-
-    /*!*border-style: solid;*!*/
-/*}*/
-
-/*article div {*/
-    /*float: left;*/
-    /*overflow: auto;*/
-    /*width: 50%;*/
-    /*font-family: 'Roboto', sans-serif;*/
-/*}*/
-
-/*#infotext {*/
-    /*vertical-align: middle;*/
-/*}*/
-
-/*#mess {*/
-    /*font-family: 'Poiret One', cursives;*/
-    /*padding: 2em;*/
-    /*font-size: 2em;*/
-/*}*/
-
-/*#img1 {*/
-    /*width: 50%;*/
-/*}*/
-
-/*h1 {*/
-    /*font-family: 'Poiret One', cursive;*/
-    /*font-size: 4em;*/
-    /*margin: 60px;*/
-    /*text-align: center;*/
-/*}*/
-
-/*img {*/
-    /*margin: 20px;*/
-/*}*/
-
-/*  SECTIONS  */
+.fa-cloud:before{
+    content: "\f0c2";
+    font-size: 40px;
+}
 .section {
     clear: both;
     padding: 0px;
     margin: 0px;
 }
 
-/*  COLUMN SETUP  */
 .col {
     display: block;
     float: left;
@@ -207,7 +132,6 @@ img {
     color: #6b6c6d;
 }
 
-/*  GROUPING  */
 .group:before,
 .group:after {
     content: "";
@@ -219,10 +143,9 @@ img {
 }
 
 .group {
-    zoom: 1; /* For IE 6/7 */
+    zoom: 1;
 }
 
-/*  GRID OF FIVE  */
 .span_5_of_5 {
     width: 100%;
 }
@@ -253,7 +176,6 @@ img {
     border: 1px solid rgba(71, 82, 94, 0.28);
 }
 
-/*  GO FULL WIDTH BELOW 480 PIXELS */
 @media only screen and (max-width: 480px) {
     .col {
         margin: 1% 0 1% 0%;
@@ -270,6 +192,7 @@ img {
     position: relative;
     margin: 0 auto;
     padding: 0;
+    display: inline-block;
 }
 
 #image {
@@ -279,15 +202,13 @@ img {
 }
 
 #text {
-    font-weight: bold;
-    color: #FFFF00;
-    text-shadow: 1px 1px #000, -0.5px -0.5px #FFF;
-
-    position: relative;
-    margin: 0;
-    padding: 0;
-
-    top: -40px;
+    font-family: 'Poiret One', cursives;
+    color: white;
+    font-size: 150%;
+    /*position: relative;*/
+    /*margin: 0;*/
+    /*padding: 0;*/
+    /*top: -40px;*/
 }
 
 h3 {
@@ -297,16 +218,15 @@ h3 {
     font-weight: bold;
     margin-top: 80px;
 
-
 }
 
-#fp {
+.fp {
     font-family: 'Poiret One', cursives;
     color: #002540;
     font-size: 2em;
-    font-weight: bold;
-    bottom: -20px;
-    position: relative;
+    /*font-weight: bold;*/
+    /*bottom: -20px;*/
+    /*position: relative;*/
 
 }
 
@@ -314,16 +234,136 @@ h3 {
     background: #FFF;
     padding: 1em;
 
-
 }
+
 .fa-cloud {
-    text-align: left;
     width: 100%;
     font-size: 4em;
+    text-align: right;
 }
+
 .fa-cloud:before {
     content: "\f0c2";
     font-size: 40px;
+}
+
+.wrapper0 {
+    padding: 2px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 5px;
+    background-color: white;
+    color: #444;
+}
+.wrapper1 {
+    padding: 2px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 5px;
+    background-color: white;
+    color: #444;
+}
+.time {
+    font-family: 'Poiret One', cursives;
+    background-color: white;
+    color: rgb(116, 145, 191);
+    font-size: 110%;
+}
+
+.box {
+    font-family: 'Poiret One', cursives;
+    background-color: rgba(184, 191, 196, 0.1);
+    color: #fff;
+    border-radius: 5px;
+    font-size: 150%;
+
+}
+
+.plate1 {
+    display: grid;
+    background-color: white;
+}
+
+.time1 {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 1;
+}
+
+.time2 {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 1;
+}
+
+.time3 {
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 1;
+}
+
+.time4 {
+    grid-column-start: 5;
+    grid-column-end: 6;
+    grid-row-start: 1;
+    grid-row-end: 1;
+}
+
+.time5 {
+    grid-column-start: 6;
+    grid-column-end: 7;
+    grid-row-start: 1;
+    grid-row-end: 1;
+}
+
+.d {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 2;
+}
+
+.e {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 2;
+}
+
+.f {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 2;
+}
+
+.g {
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 2;
+    grid-row-end: 2;
+}
+
+.h {
+    grid-column-start: 5;
+    grid-column-end: 6;
+    grid-row-start: 2;
+    grid-row-end: 2;
+}
+
+.i {
+    grid-column-start: 6;
+    grid-column-end: 7;
+    grid-row-start: 2;
+    grid-row-end: 2;
+}
+
+.info {
+    font-size: 0;
+    background-color: white;
 }
 
 form {
@@ -335,6 +375,96 @@ h4 {
     text-align: center;
     font-family: 'Poiret One', cursives;
     color: #27608a;
+    font-size: 2em;
+    font-weight: bold;
+    margin-top: 80px;
+}
+
+
+#logotype {
+    width: 162px;
+    height: 78px;
+}
+
+table {
+
+    text-align: center;
+    margin: 0px auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+footer {
+    height: 4em;
+}
+
+/*HEADER GRID WITH LOGO AND FAFA-CLOUD*/
+
+.r1 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 1;
+}
+.r2 {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 1;
+}
+.r3 {
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 1;
+    text-align: center;
+}
+.r5 {
+    grid-column-start: 6;
+    grid-column-end: 7;
+    grid-row-start: 1;
+    grid-row-end: 1;
+    text-align:center;
+}
+/*}*/
+/*.r3 {*/
+    /*grid-column-start: 1;*/
+    /*grid-column-end: 2;*/
+    /*grid-row-start: 1;*/
+    /*grid-row-end: 1;*/
+/*}*/
+/*.r4 {*/
+    /*grid-column-start: 1;*/
+    /*grid-column-end: 2;*/
+    /*grid-row-start: 1;*/
+    /*grid-row-end: 1;*/
+/*}*/
+/*.r5 {*/
+    /*grid-column-start: 1;*/
+    /*grid-column-end: 2;*/
+    /*grid-row-start: 1;*/
+    /*grid-row-end: 1;*/
+/*}*/
+/*.r6 {*/
+    /*grid-column-start: 1;*/
+    /*grid-column-end: 2;*/
+    /*grid-row-start: 1;*/
+    /*grid-row-end: 1;*/
+/*}*/
+td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-family: 'Poiret One', cursives;
+    color: #0b0533;
+    font-size: 2EM;
+}
+
+th {
+    text-align: center;
+    text-align: left;
+    font-family: 'Poiret One', cursives;
+    color: #002540;
     font-size: 2em;
     font-weight: bold;
     margin-top: 80px;
