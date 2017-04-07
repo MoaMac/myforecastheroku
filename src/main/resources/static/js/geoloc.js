@@ -35,22 +35,17 @@ function initMap() {
 
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
-            var pos = {
+            var currentCoordinates = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
             };
 
             marker = new google.maps.Marker({
-                position: pos,
+                position: currentCoordinates,
                 map: map
             });
 
-            map.setCenter(pos);
-
-            currentCoordinates = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-            };
+            map.setCenter(currentCoordinates);
 
             loadLocation(currentCoordinates.lat, currentCoordinates.lng);
         }, function () {

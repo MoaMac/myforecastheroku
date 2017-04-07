@@ -16,23 +16,6 @@ function getTempImage(weather) {
             return "img/pool-eight-ball.svg";
             break;
     }
-    /*
-     if (temp < -10) {
-     return "img/033-weather-1.svg";
-     } else if (-10 < temp && temp <= 0) {
-     return "img/042-snowflake.svg"
-     } else if (0 < temp && temp <=5) {
-     return "img/040-windy.svg";
-     } else if (5 < temp && temp <= 10) {
-     return "img/048-cloud.svg";
-     } else if (10 < temp && temp < 17) {
-     return "img/045-rainbow.svg";
-     } else if (17 < temp && temp < 23) {
-     return "img/041-sun.svg";
-     } else if (23< temp && temp < 40) {
-     return "img/032-sea.svg";
-     }
-     */
 }
 function getBackground(weather) {
     switch (weather) {
@@ -53,34 +36,7 @@ function getBackground(weather) {
             break;
     }
 }
-// Original getMessage function below///
-// function getMessage(TemperatureArray, WeatherArray) {
-//     var totalTempFafa=0;
-//     var message = "";
-//
-//     for(var i =0; i<TemperatureArray.length; i++){
-//         totalTempFafa = totalTempFafa + TemperatureArray[i];
-//     }
-//
-//     var temp = totalTempFafa / (TemperatureArray.length);
-//
-//     if (temp < -10) {
-//         message = "Holy crap, I can't feel my face degrees! Wear something warm!"
-//     } else if (-10 < temp && temp <= 0) {
-//         message = "I miss hating the summer heat. Don't forget your hat!";
-//     } else if (0 < temp && temp <= 5) {
-//         message = "Boring, cold weather. Wear something warm and colorful.";
-//     } else if (5 < temp && temp <= 10) {
-//         message = "Cloudy, with a 100% chance of greyness!";
-//     } else if (10 < temp && temp <= 17) {
-//         message = "Watch out for unicorns. Wear converse!";
-//     } else if (17 < temp && temp <= 23) {
-//         message = "Go out and eat ICECREAM!";
-//     } else if (23 < temp && temp < 40) {
-//         message = "Shame on you, guys! The weather is getting hotter than YOU!";
-//     }
-//     return message;
-// }
+
 // new getMessage function TEST ///
 function getMessage(TemperatureArray, WeatherArray) {
     var totalTemp = 0;
@@ -164,45 +120,45 @@ function transmute(temp, weather) {
     }
 
     if (temp < -10) {
-        imgClothing2 = "img2/016-fashion-1.svg"; //Uggs
+        imgClothing2 = "img/016-fashion-1.svg"; //Uggs
         imgClothing3 = "img/013-jacket-1.svg"; //Dunjacka
-        imgClothing4 = "img3/003-sweater.svg"; //Tjocktröja
-        imgClothing5 = "img2/019-fashion.svg"; //Sockor
+        imgClothing4 = "img/003-sweater.svg"; //Tjocktröja
+        imgClothing5 = "img/019-fashion.svg"; //Sockor
         message = "Holy crap, I can't feel my face degrees! Wear something warm!"
     } else if (-10 < temp && temp <= 0) {
-        imgClothing2 = "img2/014-hat.svg"; //Mössa
+        imgClothing2 = "img/014-hat.svg"; //Mössa
         imgClothing3 = "img/010-boot.svg"; //Kängor
-        imgClothing4 = "img2/015-christmas.svg"; //Halsduk
-        imgClothing5 = "img2/024-mitten.svg"; //Vantar
+        imgClothing4 = "img/015-christmas.svg"; //Halsduk
+        imgClothing5 = "img/024-mitten.svg"; //Vantar
         message = "I miss hating the summer heat. Don't forget your hat!";
     } else if (0 < temp && temp <= 5) {
-        imgClothing2 = "img3/004-boot.svg";  //Boots vid skask
-        imgClothing3 = "img3/006-coat.svg"; //Kappa
-        imgClothing4 = "img3/005-winter-hat.svg"; //Mössa
-        imgClothing5 = "img3/002-clothes.svg"; //Handskar
+        imgClothing2 = "img/004-boot.svg";  //Boots vid skask
+        imgClothing3 = "img/006-coat.svg"; //Kappa
+        imgClothing4 = "img/005-winter-hat.svg"; //Mössa
+        imgClothing5 = "img/002-clothes.svg"; //Handskar
         message = "Boring, cold weather. Wear something warm and colorful.";
     } else if (5 < temp && temp <= 10) {
-        imgClothing2 = "img2/006-jacket.svg";//Jacka
+        imgClothing2 = "img/006-jacket.svg";//Jacka
         imgClothing3 = "img/028-fashion.svg"; //Keps
-        imgClothing4 = "img3/008-jeans.svg"; //Jeans
+        imgClothing4 = "img/008-jeans.svg"; //Jeans
         imgClothing5 = "img/017-vest.svg"; //Väst
         message = "Cloudy, with a 100% chance of greyness!";
     } else if (10 < temp && temp < 17) {
-        imgClothing2 = "img3/010-skirt.svg";  //Kjol
-        imgClothing3 = "img3/009-socks.svg"; //Strumpbyxor
+        imgClothing2 = "img/010-skirt.svg";  //Kjol
+        imgClothing3 = "img/009-socks.svg"; //Strumpbyxor
         imgClothing4 = "img/024-shoe.svg";//Converse
-        imgClothing5 = "img3/007-coat-1.svg"; //Trenchcoat
+        imgClothing5 = "img/007-coat-1.svg"; //Trenchcoat
         message = "Watch out for unicorns. Wear converse!";
     } else if (17 < temp && temp < 23) {
-        imgClothing2 = "img2/011-dress.svg";  //Klänning
-        imgClothing3 = "img2/007-denim-jacket.svg"; //denimjacket
+        imgClothing2 = "img/011-dress.svg";  //Klänning
+        imgClothing3 = "img/007-denim-jacket.svg"; //denimjacket
         imgClothing4 = "img/015-fashion-2.svg"; //T-shirt
         imgClothing5 = "img/020-sunglasses.svg"; //Glasögon
         message = "Go out and eat ICECREAM!";
     } else if (23 < temp && temp < 40) {
         imgClothing2 = "img/023-fashion-1.svg";  //Bikini
         imgClothing3 = "img/016-swimsuit.svg"; //Badshorts
-        imgClothing4 = "img2/013-bride-dress.svg"; //Mössa
+        imgClothing4 = "img/013-bride-dress.svg"; //Mössa
         imgClothing5 = "img/018-flip-flops.svg"; //Flipflopps
         message = "Shame on you, guys! The weather is getting hotter than YOU!";
     }
@@ -215,7 +171,6 @@ function transmute(temp, weather) {
     document.getElementById("message").innerHTML = message;
 }
 
-// New methods added by Moa ///
 
 function chooseClothes(temp) {
     var imgClothing;
@@ -224,11 +179,11 @@ function chooseClothes(temp) {
     } else if (-10 < temp && temp <= 0) {
         imgClothing = "img/010-boot.svg"; //Kängor
     } else if (0 < temp && temp <= 5) {
-        imgClothing = "img3/006-coat.svg"; //Kappa
+        imgClothing = "img/006-coat.svg"; //Kappa
     } else if (5 < temp && temp <= 10) {
-        imgClothing = "img3/003-sweater.svg"; //Tjocktröja
+        imgClothing = "img/003-sweater.svg"; //Tjocktröja
     } else if (10 < temp && temp <= 17) {
-        imgClothing = "img2/007-denim-jacket.svg";  //denimjacket
+        imgClothing = "img/007-denim-jacket.svg";  //denimjacket
     } else if (17 < temp && temp <= 23) {
         imgClothing = "img/015-fashion-2.svg"; //T-shirt
     } else if (23 < temp && temp < 40) {
@@ -240,39 +195,39 @@ function chooseClothes(temp) {
 function chooseArrayClothes(temp) {
     var clothes = [];
     if (temp < -10) {
-        clothes[0] = "img2/016-fashion-1.svg"; //Uggs
+        clothes[0] = "img/016-fashion-1.svg"; //Uggs
         clothes[1] = "img/013-jacket-1.svg"; //Dunjacka
-        clothes[2] = "img3/003-sweater.svg"; //Tjocktröja
+        clothes[2] = "img/003-sweater.svg"; //Tjocktröja
     } else if (-10 < temp && temp <= 0) {
-        clothes[0] = "img2/014-hat.svg"; //Mössa
+        clothes[0] = "img/014-hat.svg"; //Mössa
         clothes[1] = "img/010-boot.svg"; //Kängor
-        clothes[2] = "img2/015-christmas.svg"; //Halsduk
+        clothes[2] = "img/015-christmas.svg"; //Halsduk
     } else if (0 < temp && temp <= 5) {
-        clothes[0] = "img3/004-boot.svg";  //Boots vid slask
-        clothes[1] = "img3/006-coat.svg"; //Kappa
-        clothes[2] = "img3/005-winter-hat.svg"; //Mössa
+        clothes[0] = "img/004-boot.svg";  //Boots vid slask
+        clothes[1] = "img/006-coat.svg"; //Kappa
+        clothes[2] = "img/005-winter-hat.svg"; //Mössa
     } else if (5 < temp && temp <= 7) {
-        clothes[0] = "img2/015-christmas.svg"; //Halsduk
-        clothes[1] = "img2/006-jacket.svg";//Jacka
-        clothes[2] = "img3/008-jeans.svg"; //Jeans
+        clothes[0] = "img/015-christmas.svg"; //Halsduk
+        clothes[1] = "img/006-jacket.svg";//Jacka
+        clothes[2] = "img/008-jeans.svg"; //Jeans
     }
     else if (7 < temp && temp <= 10) {
-        clothes[0] = "img2/006-jacket.svg";//Jacka
+        clothes[0] = "img/006-jacket.svg";//Jacka
         clothes[1] = "img/028-fashion.svg"; //Keps
-        clothes[2] = "img3/008-jeans.svg"; //Jeans
+        clothes[2] = "img/008-jeans.svg"; //Jeans
     }
     else if (10 < temp && temp <= 17) {
-        clothes[0] = "img3/010-skirt.svg";  //Kjol
+        clothes[0] = "img/010-skirt.svg";  //Kjol
         clothes[1] = "img/015-fashion-2.svg"; //T-shirt
         clothes[2] = "img/024-shoe.svg";//Converse
     } else if (17 < temp && temp <= 23) {
-        clothes[0] = "img2/011-dress.svg";  //Klänning
-        clothes[1] = "img2/007-denim-jacket.svg"; //denimjacket
+        clothes[0] = "img/011-dress.svg";  //Klänning
+        clothes[1] = "img/007-denim-jacket.svg"; //denimjacket
         clothes[2] = "img/015-fashion-2.svg"; //T-shirt
     } else if (23 < temp && temp < 40) {
         clothes[0] = "img/023-fashion-1.svg";  //Bikini
         clothes[1] = "img/016-swimsuit.svg"; //Badshorts
-        clothes[2] = "img2/013-bride-dress.svg"; //Mössa
+        clothes[2] = "img/013-bride-dress.svg"; //Mössa
     }
     return clothes;
 }

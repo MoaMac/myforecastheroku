@@ -168,9 +168,9 @@ function setFiveDayForecastDataInDOM(arrayTemperatures, arrayWeatherSums) {
         var accessoriesImg = chooseAccessories(arrayTodayWeatherSums[col]);
         arrayAllRowsNodes[row][col + 1 + offset].innerHTML = generateHTMLItemToday(arrayTodayTemperatures[col], getTempImage(arrayTodayWeatherSums[col]), clothing1, clothing2, clothing3, accessoriesImg);
         var backgroundImg = getBackground(arrayTodayWeatherSums[col]);
-        arrayAllRowsNodes[row][col + 1 + offset].setAttribute("style", "background-image: url("+backgroundImg+")");
+        arrayAllRowsNodes[row][col + 1 + offset].setAttribute("style", "background-image: url(" + backgroundImg + ")");
     }
-    document.getElementById("message").innerHTML = getMessage(arrayTodayTemperatures,arrayTodayWeatherSums);
+    document.getElementById("message").innerHTML = getMessage(arrayTodayTemperatures, arrayTodayWeatherSums);
 
     // HANDLE SECOND+ ROWS
     for (row = 1; row < arrayTemperatures.length; row++) {
@@ -179,45 +179,10 @@ function setFiveDayForecastDataInDOM(arrayTemperatures, arrayWeatherSums) {
             accessoriesImg = chooseAccessories(arrayWeatherSums[row][col]);
             arrayAllRowsNodes[row][col + 1].innerHTML = generateHTMLItemForecast(arrayTemperatures[row][col], getTempImage(arrayWeatherSums[row][col]), clothesImg, accessoriesImg);
             var backgroundImg = getBackground(arrayWeatherSums[row][col]);
-            arrayAllRowsNodes[row][col + 1].setAttribute("style", "background-image: url("+backgroundImg+")");
+            arrayAllRowsNodes[row][col + 1].setAttribute("style", "background-image: url(" + backgroundImg + ")");
         }
     }
 }
-
-/// Below is the original setFiveDayForecastDataInDOM method ///
-
-// function setFiveDayForecastDataInDOM(arrayTemperatures, arrayWeatherSums) {
-//     var arrayAllRowsNodes = [getRowNodes(2), getRowNodes(3), getRowNodes(4), getRowNodes(5), getRowNodes(6)];
-//
-//     // SET DATES IN DOM
-//     var calendarDays = setCalendarDays();
-//     var date;
-//     for(var row = 0; row < arrayAllRowsNodes.length; row++) {
-//         date = new Date(0);
-//         date.setUTCSeconds(forecastData[calendarDays[row]][0]["H21"][0].dt);
-//         arrayAllRowsNodes[row][0].innerHTML = getStringDate(date);
-//     }
-//
-//     // SET AVERAGE TEMPERATURE AND WEATHER IMAGE IN DOM
-//     var row = 0;
-//     var col = 0;
-//
-//     // Handle first row (the today's weather forecast)
-//     var arrayTodayTemperatures = arrayTemperatures[row];
-//     var arrayTodayWeatherSums = arrayWeatherSums[row];
-//     // offset required to position the data in correct column (when certain time period(s) has passed and the connected data is removed)
-//     var offset = 5 - arrayTodayTemperatures.length;
-//     for(col = 0; col < arrayTodayTemperatures.length; col++) {
-//         arrayAllRowsNodes[row][col+1+offset].innerHTML = generateHTMLItemForFDWF(arrayTodayTemperatures[col], getTempImage(arrayTodayWeatherSums[col]));
-//     }
-//
-//     // Handle second+ rows
-//     for(row = 1; row < arrayAllRowsNodes.length; row++) {
-//         for(col = 0; col < arrayTemperatures[row].length; col++) {
-//             arrayAllRowsNodes[row][col+1].innerHTML = generateHTMLItemForFDWF(arrayTemperatures[row][col], getTempImage(arrayWeatherSums[row][col]));
-//         }
-//     }
-// }
 
 /// --- HELP FUNCTIONS --- ///
 /* Get an array of the hours left of a specific
@@ -268,7 +233,7 @@ function getRowNodes(rowNumber) {
 // Function added by Moa ///
 function generateHTMLItemToday(text, imgres, clothing1, clothing2, clothing3, accessories) {
     return "<div id='avgicon' class='" + imgres + "'><p id='text'>" + text + " °C</p>" +
-        "<img id='accessories' src='" + accessories + "'>" + "<img src='" + clothing1 + "'> "+ "<img src='" + clothing2 + "'> "+ "<img src='" + clothing3 + "'> " + "</div>";
+        "<img id='accessories' src='" + accessories + "'>" + "<img src='" + clothing1 + "'> " + "<img src='" + clothing2 + "'> " + "<img src='" + clothing3 + "'> " + "</div>";
 }
 function generateHTMLItemForecast(text, imgres, clothes, accessories) {
     return "<div id='avgicon' class='" + imgres + "'><p id='text'>" + text + " °C</p>" +
