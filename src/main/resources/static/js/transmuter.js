@@ -208,19 +208,19 @@ function chooseArrayClothes(temp) {
         clothes[1] = "img/006-coat.svg"; //Kappa
         clothes[2] = "img/005-winter-hat.svg"; //Mössa
     } else if (5 < temp && temp <= 7) {
-        clothes[0] = "img/015-christmas.svg"; //Halsduk
+        clothes[0] = "img/014-hat.svg"; //Mössa
         clothes[1] = "img/006-jacket.svg";//Jacka
         clothes[2] = "img/008-jeans.svg"; //Jeans
     }
     else if (7 < temp && temp <= 10) {
-        clothes[0] = "img/006-jacket.svg";//Jacka
-        clothes[1] = "img/028-fashion.svg"; //Keps
+        clothes[0] = "img/015-christmas.svg"; //Halsduk
+        clothes[1] = "img/006-jacket.svg";//Jacka
         clothes[2] = "img/008-jeans.svg"; //Jeans
     }
     else if (10 < temp && temp <= 17) {
-        clothes[0] = "img/010-skirt.svg";  //Kjol
-        clothes[1] = "img/015-fashion-2.svg"; //T-shirt
-        clothes[2] = "img/024-shoe.svg";//Converse
+        clothes[0] = "img/017-vest.svg"; // väst
+        clothes[1] = "img/028-fashion.svg"; //Keps
+        clothes[2] = "img/008-jeans.svg"; //Jeans
     } else if (17 < temp && temp <= 23) {
         clothes[0] = "img/011-dress.svg";  //Klänning
         clothes[1] = "img/007-denim-jacket.svg"; //denimjacket
