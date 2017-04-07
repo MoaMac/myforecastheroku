@@ -57,7 +57,8 @@ function getMessage(TemperatureArray, WeatherArray) {
     } else if (5 < temp && temp <= 7) {
         message += "Perfect weather for knitted sweaters.";
     } else if (7 < temp && temp <= 10) {
-        message += "A bit chilly, but not to cold. You will do good with a warm sweater and a light jacket.";
+        message += "A bit chilly, but not too cold. You will do good with a warm sweater and a light jacket.";
+        console.log("Here")
     } else if (10 < temp && temp <= 14) {
         message += "Leave the heavy jacket at home.";
     } else if (14 < temp && temp <= 17) {

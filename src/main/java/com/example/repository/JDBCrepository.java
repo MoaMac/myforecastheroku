@@ -32,7 +32,11 @@ public class JDBCrepository implements RepositoryInterface {
     public List<Log> listLog() throws Exception {
         try (Connection conn = dataSource.getConnection();
              Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT CityName, COUNT (*) AS DUPES FROM Log GROUP BY CityName HAVING (COUNT (*)>1)")) {
+             ResultSet rs = stmt.executeQuery("SELECT CityName, COUNT (*) AS DUPES FROM Log GROUP BY CityName HAVING (COUNT (*)>1)"))
+
+
+
+        {
             List<Log> logs = new ArrayList<>();
             while (rs.next()) logs.add(rsLog(rs));
             return logs;
