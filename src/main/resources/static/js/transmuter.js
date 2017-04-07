@@ -117,22 +117,22 @@ function getMessage(TemperatureArray, WeatherArray) {
     var rainy = "";
     var sunny = "";
     for (var i = 0; i < WeatherArray.length; i++) {
-        if (WeatherArray[i] === 'rain') {
+        if (WeatherArray[i].toLowerCase() === 'rain') {
             rainy = "true";
         }
-        if (WeatherArray[i] === 'clear') {
+        if (WeatherArray[i].toLowerCase() === 'clear') {
             sunny = "true";
         }
     }
     if (rainy) {
         message += " Don't wear your suede shoes, it's going to rain today!";
+    } else if (temp > 10) {
+        message += " You could wear your suede shoes today!"
     }
     if (sunny) {
         message += " And don't forget your sunglasses!"
     }
-    if (!rainy && temp > 10) {
-        message += " You could wear your suede shoes today!"
-    }
+
     return message;
 }
 
